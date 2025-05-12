@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 /* Navigatiebalk */
 .navbar {
   background-color: #007BFF; /* Blauwe achtergrond */
@@ -64,7 +64,11 @@ body {
   text-align: center;
   margin-top: auto; /* Zorgt ervoor dat de footer naar de onderkant van de pagina wordt geduwd */
 }
-=======
+.footer-links a {
+  margin-right: 15px;
+  text-decoration: none;
+  color: black;
+}
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -88,4 +92,4 @@ body {
     background-color: #ddd;
     color: black;
   }
->>>>>>> 94b6ebf3e61d8bee85433bf4c24390b5177b7288
+
