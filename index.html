@@ -2,24 +2,124 @@
 <html lang="nl">
 <head>
   <meta charset="UTF-8">
-  <title>Startbalk Voorbeeld</title>
+  <title>Startpagina</title>
+  <link rel="stylesheet" href="style.css">
   <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #ffffff;
+      color: black;
+    }
+
+    .navbar {
+      background-color: rgb(0, 140, 255);
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .navbar a {
+      color: black;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px 12px;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+
+    .navbar a:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    .content {
+      max-width: 1200px;
+      margin: 50px auto;
+      padding: 20px;
+    }
+
+    .intro-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    @media (min-width: 768px) {
+      .intro-section {
+        flex-direction: row;
+        text-align: left;
+        gap: 40px;
+      }
+    }
+
+    .intro-section img {
+      max-width: 300px;
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .intro-text {
+      max-width: 700px;
+    }
+
+    footer {
+      background-color: rgb(240, 240, 240);
+      text-align: center;
+      padding: 20px;
+      margin-top: 60px;
+    }
+
+    .footer-links a {
+      text-decoration: none;
+      color: black;
+      margin: 0 10px;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
 
   </style>
 </head>
 <body>
 
-<div class="navbar">
-  <a href="#home">Home</a>
-  <a href="#over">Over</a>
-  <a href="#diensten">Diensten</a>
-  <a href="#contact">Contact</a>
-</div>
+  <div class="navbar">
+    <a href="index.html">Home</a>
+    <a href="project.html">Project</a>
+    <a href="over.html">Over</a>
+    <a href="diensten.html">Diensten</a>
+    <a href="contact.html">Contact</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="support.html">Support</a>
+  </div>
 
-<div style="padding: 20px;">
-  <h1>mijn website</h1>
-  <p></p>
-</div>
+  <div class="content">
+    <h1 style="text-align: center;">Welkom op mijn website!</h1>
+    
+    <div class="intro-section">
+      <img src="assets/images/sam IoT.jpg" alt="Afbeelding van een project">
+      <div class="intro-text">
+        <p><strong>Mijn logo dat ik heb gekozen</strong></p>
+        <p>Welkom op mijn website!  
+        Dit is de plek waar ik mijn projecten verzamel en toon wat ik het afgelopen jaar heb geleerd. Doorheen het jaar heb ik aan verschillende opdrachten, experimenten en ideeën gewerkt, en op deze site krijg je een inkijk in dat leerproces.</p>
+        <p>Van eerste probeersels tot afgewerkte projecten.  Ik hoop dat je met plezier ontdekt waar ik mee bezig ben geweest en misschien zelfs geïnspireerd raakt door wat je ziet.</p>
+      </div>
+    </div>
+  </div>
+
+  
+  <footer>
+    <div class="footer-links">
+      <a href="privacy.html">Privacybeleid</a>
+      <a href="voorwaarden.html">Voorwaarden</a>
+      <a href="sitemap.html">Sitemap</a>
+    </div>
+  </footer>
 
 </body>
 </html>

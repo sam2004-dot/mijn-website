@@ -1,23 +1,65 @@
+/* Navigatiebalk */
+.navbar {
+  background-color: #007BFF; /* Blauwe achtergrond */
+  overflow: hidden;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%; /* Zorgt dat het over de hele breedte gaat */
+  box-sizing: border-box;
+  position: relative;
+}
+.navbar a {
+  color: white; /* Witte tekstkleur */
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none; /* Geen onderstreping */
+  font-size: 17px; /* Grotere tekst */
+  flex-grow: 1; /* Zorgt dat de links gelijkmatig verdeeld zijn */
+}
+.navbar a:hover {
+  background-color: #0056b3; /* Donkerder blauw bij hover */
+  color: white; /* Witte tekstkleur bij hover */
+}
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-  }
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
 
-  .navbar {
-    background-color: #333;
-    overflow: hidden;
-  }
+.content {
+  flex: 1;
+}
 
-  .navbar a {
-    float: left;
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 20px;
-    text-decoration: none;
-  }
+.footer {
+  background-color: rgb(240, 240, 240);
+  padding: 20px;
+  text-align: center;
+}
+.footer-links a {
+  margin-right: 15px;
+  text-decoration: none;
+  color: black;
+}
+.footer-links a:last-child {
+  margin-right: 0;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
 
-  .navbar a:hover {
-    background-color: #ddd;
-    color: black;
-  }
+.content {
+  flex: 1; /* Zorgt ervoor dat de inhoud de resterende ruimte inneemt */
+}
+
+.footer {
+  background-color: rgb(240, 240, 240);
+  padding: 20px;
+  text-align: center;
+  margin-top: auto; /* Zorgt ervoor dat de footer naar de onderkant van de pagina wordt geduwd */
+}
