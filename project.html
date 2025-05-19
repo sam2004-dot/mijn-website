@@ -1,18 +1,9 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title style="color: black;">Mijn Projecten</title>
-    <header>
-  
-      <nav>
-        <a href="index.html" style="color: rgb(0, 0, 0); text-decoration: none; margin-right: 10px;">Home</a>
-        <a href="over.html" style="color: rgb(0, 0, 0); text-decoration: none; margin-right: 10px;">Over</a>
-        <a href="contact.html" style="color: rgb(0, 0, 0); text-decoration: none;">Contact</a>
-      </nav>
-    </header>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mijn Projecten</title>
 
   <style>
     body {
@@ -21,109 +12,237 @@
       background-color: #fff;
       color: #000;
     }
+
+    header {
+      background-color: rgb(0, 140, 255);
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav a {
+      color: black;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: bold;
+    }
+
+    header h1 {
+      margin: 10px 0 0;
+      font-size: 2em;
+      color: black;
+    }
+
     .container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 40px 20px;
     }
-    /* Blauwe headerbalk toegevoegd */
-    header {
-      background-color: rgb(0, 140, 255);
-      padding: 20px;
-      color: white;
-      text-align: center;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2em;
-    }
-    main {
-      padding: 20px;
-    }
+
     .project-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 30px;
-      padding: 0;
-      list-style: none;
     }
+
     .project-card {
-      background-color: #f2f2f2;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      padding: 10px;
       text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.3s ease;
     }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+
     .project-card img {
       width: 100%;
-      max-width: 250px;
-      border-radius: 5px;
-      margin-bottom: 15px;
+      border-radius: 8px;
+      max-height: 200px;
+      object-fit: cover;
     }
-    .project-card figcaption {
-      font-size: 0.95em;
-      line-height: 1.4;
+
+    .project-card h3 {
+      margin: 15px 0 0;
+      font-size: 1.1em;
     }
-    footer {
-      background-color: rgb(0, 140, 255);
-      color: black;
-      text-align: center;
+
+    /* Popup-styling */
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
       padding: 20px;
-      margin-top: 50px;
     }
-    footer nav a {
-      color: black;
-      text-decoration: none;
-      margin: 0 10px;
+
+    .popup-content {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 900px;
+      width: 100%;
+      max-height: 90%;
+      overflow: auto;
+      position: relative;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      flex-wrap: wrap;
     }
-    footer nav a:hover {
-      text-decoration: underline;
+
+    .popup-content img {
+      max-width: 100%;
+      max-height: 70vh;
+      height: auto;
+      border-radius: 8px;
+      object-fit: contain;
+      flex: 1 1 300px;
+    }
+
+    .popup-text-block {
+      flex: 1 1 300px;
+      text-align: left;
+    }
+
+    .popup-text-block h2 {
+      margin-top: 0;
+    }
+
+    .popup-text-block p {
+      margin-top: 10px;
+      line-height: 1.6;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 800px) {
+      .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .popup-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .popup-text-block {
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
+
 <body>
   <header>
-    <h1 style="color: black;">Mijn Projecten</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="over.html">Over</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <h1>Mijn Projecten</h1>
   </header>
+
   <main class="container">
     <section class="project-grid">
-      <figure class="project-card">
-        <img src="assets/images/project1.png" alt="Schermafbeelding van project 1">
-        <figcaption>
-          Dit project simuleert een kruispunt met verkeerslichten. Aan beide kanten staan 3 leds (rood, oranje, groen) die afhankelijk van een tijdschema automatisch wisselen van kleur. Ideaal om basislogica en schakelingen met timers te oefenen.
-        </figcaption>
+      <figure class="project-card" data-title="Verkeerslicht Simulatie" data-description="Dit project simuleert een realistisch kruispunt met twee sets verkeerslichten. Elke set bestaat uit drie LEDs (rood, oranje en groen) die wisselen op basis van een geprogrammeerd tijdschema. Deze oefening is bedoeld om logische schakelingen, timers en de sequentiële werking van verkeerslichten te begrijpen en toe te passen.">
+        <img src="assets/images/project1.png" alt="Project 1">
+        <h3>Verkeerslicht Simulatie</h3>
       </figure>
-      <figure class="project-card">
-        <img src="assets/images/project2.png" alt="Schermafbeelding van project 2">
-        <figcaption>
-          Hier werk ik met een servomotor die reageert op input van een knop. De leds tonen aan of de servo in beweging is. Dit is een oefening in het combineren van beweging met visuele feedback via lichtsignalen.
-        </figcaption>
+
+      <figure class="project-card" data-title="Servo + Leds" data-description="Een servomotor wordt aangestuurd via een drukknop. De beweging wordt visueel weergegeven met LED-lampjes. Een goede oefening om input en outputcomponenten te combineren.">
+        <img src="assets/images/project2.png" alt="Project 2">
+        <h3>Servo + Leds</h3>
       </figure>
-      <figure class="project-card">
-        <img src="assets/images/project3.png" alt="Schermafbeelding van project 3">
-        <figcaption>
-          In dit project stel ik een voertuig voor dat vooruit en achteruit kan rijden met behulp van twee motoren. Een potentiometer regelt de snelheid en op het LCD-scherm wordt live de snelheid en rijrichting weergegeven. Dit is een voorbeeld van hoe sensoren, actuatoren en schermoutput samenwerken.
-        </figcaption>
+
+      <figure class="project-card" data-title="Rijdend Voertuig" data-description="Een voertuig aangedreven door twee motoren. De richting en snelheid worden bestuurd met een potentiometer en getoond op een LCD-display.">
+        <img src="assets/images/project3.png" alt="Project 3">
+        <h3>Rijdend Voertuig</h3>
       </figure>
-      <figure class="project-card">
-        <img src="assets/images/project4.jpg" alt="Schermafbeelding van project 4">
-        <figcaption>
-          In dit project laat ik zien hoe een LDR werkt met behulp van een led en een potentiometer. Door de veranderde weerstand gaat de led knipperen als een noodlamp.
-        </figcaption>
+
+      <figure class="project-card" data-title="LDR Alarmlicht" data-description="Een lichtsensor (LDR) detecteert omgevingslicht. Wanneer het donker wordt, begint een LED automatisch te knipperen. Ideaal voor lichtgebaseerde detectie.">
+        <img src="assets/images/project4.jpg" alt="Project 4">
+        <h3>LDR Alarmlicht</h3>
       </figure>
-      <figure class="project-card">
-        <img src="assets/images/project5.png" alt="Schermafbeelding van project 5">
-        <figcaption>
-          Dit project laat zien hoe de leds van een verkeerslicht werken, niet in simulatie maar in het echt met een breadboard, Arduino en enkele weerstanden om de leds te beschermen.
-        </figcaption>
+
+      <figure class="project-card" data-title="Echt Verkeerslicht" data-description="Een echte Arduino-opstelling met LEDs en weerstanden simuleert de werking van een verkeerslicht. Het circuit is opgebouwd op een breadboard.">
+        <img src="assets/images/project5.png" alt="Project 5">
+        <h3>Echt Verkeerslicht</h3>
       </figure>
-      <figure class="project-card">
-        <img src="assets/images/project6.png" alt="Schermafbeelding van project 6">
-        <figcaption>
-          In dit project demonstreer ik hoe een DC-motor werkt met behulp van 4 drukknoppen voor besturing in verschillende richtingen. Een voorbeeld van motor aansturing met een Arduino en een motor driver.
-        </figcaption>
+
+      <figure class="project-card" data-title="DC Motorbesturing" data-description="Een DC-motor bestuurd door vier knoppen: vooruit, achteruit, stoppen, en snelheidscontrole. Dit combineert digitale input met motorsturing.">
+        <img src="assets/images/project6.png" alt="Project 6">
+        <h3>DC Motorbesturing</h3>
       </figure>
     </section>
   </main>
+
+  <!-- Popup -->
+  <div id="popup" class="popup-overlay">
+    <div class="popup-content">
+      <span class="close-btn">&times;</span>
+      <img id="popup-img" src="" alt="Popup afbeelding">
+      <div class="popup-text-block">
+        <h2 id="popup-title"></h2>
+        <p id="popup-text"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    const popup = document.getElementById('popup');
+    const popupImg = document.getElementById('popup-img');
+    const popupText = document.getElementById('popup-text');
+    const popupTitle = document.getElementById('popup-title');
+    const closeBtn = document.querySelector('.close-btn');
+    const cards = document.querySelectorAll('.project-card');
+
+    cards.forEach(card => {
+      const img = card.querySelector('img');
+      const title = card.dataset.title;
+      const description = card.dataset.description;
+
+      img.addEventListener('click', () => {
+        popupImg.src = img.src;
+        popupImg.alt = img.alt;
+        popupTitle.textContent = title;
+        popupText.textContent = description;
+        popup.style.display = 'flex';
+      });
+    });
+
+    closeBtn.addEventListener('click', () => {
+      popup.style.display = 'none';
+    });
+
+    popup.addEventListener('click', (e) => {
+      if (e.target === popup) {
+        popup.style.display = 'none';
+      }
+    });
+  </script>
 </body>
 </html>
