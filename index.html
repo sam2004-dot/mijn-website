@@ -1,129 +1,153 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>home</title>
 
-  <title>Startpagina</title>
-  <link rel="stylesheet" href="style.css">
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #ffffff;
-      color: black;
+      font-family: Arial, sans-serif;
+      background: url('./assets/images/background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+    }
+    html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+
+    header {
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
-    .navbar {
-      background-color: rgb(0, 140, 255);
-      padding: 20px;
+    header nav {
       display: flex;
       justify-content: center;
-      flex-wrap: wrap;
-      gap: 15px;
+      gap: 40px;
     }
 
-    .navbar a {
-      color: black;
+    header nav a {
+      color: #333;
       text-decoration: none;
-      font-weight: 500;
-      padding: 8px 12px;
-      border-radius: 4px;
-      transition: background-color 0.3s;
+      font-weight: bold;
+      font-size: 1.1em;
+      transition: color 0.3s;
     }
 
-    .navbar a:hover {
-      background-color: rgba(0, 0, 0, 0.1);
+    header nav a:hover {
+      color: #2f80ed;
     }
 
-    .content {
-      max-width: 1200px;
-      margin: 50px auto;
-      padding: 20px;
-    }
-
-    .intro-section {
+  
+    .intro {
+      background-color: rgba(0, 0, 0, 0.6);
+      margin: 40px auto;
+      padding: 40px;
+      max-width: 1000px;
+      border-radius: 12px;
       display: flex;
-      flex-direction: column;
+      gap: 40px;
       align-items: center;
-      text-align: center;
+      flex-wrap: wrap;
     }
 
-    @media (min-width: 768px) {
-      .intro-section {
-        flex-direction: row;
-        text-align: left;
-        gap: 40px;
+    .intro img {
+      width: 300px;
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .intro-content {
+      flex: 1;
+    }
+
+    .intro-content h1 {
+      margin-top: 0;
+      font-size: 2em;
+    }
+
+    .intro-content p {
+      line-height: 1.6;
+    }
+
+footer {
+  background: rgba(0, 0, 0, 0.8);
+  color: #ccc;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9em;
+  margin-top: auto;
+}
+footer a {
+  color: #ccc;
+  text-decoration: none;
+  margin: 0 10px;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+main {
+  flex: 1;
+}
+
+    @media (max-width: 768px) {
+      .intro {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .intro img {
+        width: 80%;
+      }
+
+      .intro-content {
+        text-align: center;
       }
     }
-
-    .intro-section img {
-      max-width: 300px;
-      width: 100%;
-      height: auto;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-
-    .intro-text {
-      max-width: 700px;
-    }
-
-    footer {
-      background-color: rgb(240, 240, 240);
-      text-align: center;
-      padding: 20px;
-      margin-top: 60px;
-    }
-
-    .footer-links a {
-      text-decoration: none;
-      color: black;
-      margin: 0 10px;
-    }
-
-    .footer-links a:hover {
-      text-decoration: underline;
-    }
-
-
   </style>
 </head>
 <body>
 
-  <div class="navbar">
-    <a href="index.html">Home</a>
-    <a href="project.html">Project</a>
-    <a href="over.html">Over</a>
-    <a href="diensten.html">Diensten</a>
-    <a href="contact.html">Contact</a>
-    <a href="portfolio.html">Portfolio</a>
-    <a href="support.html">Support</a>
-  </div>
+  <header>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="project.html">Project</a>
+      <a href="over.html">Over</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
 
-  <div class="content">
-    <h1 style="text-align: center;">Welkom op mijn website!</h1>
-    
-    <div class="intro-section">
-      <img src="assets/images/sam IoT.jpg" alt="Afbeelding van een project">
-      <div class="intro-text">
-        <p><strong>Mijn logo dat ik heb gekozen</strong></p>
-        <p>Welkom op mijn website!  
-        Dit is de plek waar ik mijn projecten verzamel en toon wat ik het afgelopen jaar heb geleerd. Doorheen het jaar heb ik aan verschillende opdrachten, experimenten en ideeën gewerkt, en op deze site krijg je een inkijk in dat leerproces.</p>
-        <p>Van eerste probeersels tot afgewerkte projecten.  Ik hoop dat je met plezier ontdekt waar ik mee bezig ben geweest en misschien zelfs geïnspireerd raakt door wat je ziet.</p>
+  <main>
+    <section class="intro">
+      <img src="./assets/images/sam IoT.jpg" alt="SAM IoT Logo" />
+      <div class="intro-content">
+        <h1>Welkom op mijn website!</h1>
+        <p><strong>Dit is mijn gekozen logo</strong></p>
+        <p>
+          Welkom op mijn website! Dit is de plek waar ik mijn projecten verzamel en toon wat ik het afgelopen jaar heb geleerd. Doorheen het jaar heb ik aan verschillende opdrachten, experimenten en ideeën gewerkt, en op deze site krijg je een inkijk in dat leerproces.
+        </p>
+        <p>
+          Van eerste probeersels tot afgewerkte projecten. Ik hoop dat je met plezier ontdekt waar ik mee bezig ben geweest en misschien zelfs geïnspireerd raakt door wat je ziet.
+        </p>
       </div>
-    </div>
-  </div>
+    </section>
+  </main>
 
-  
   <footer>
-    <div class="footer-links">
-      <a href="privacy.html">Privacybeleid</a>
-      <a href="voorwaarden.html">Voorwaarden</a>
-      <a href="sitemap.html">Sitemap</a>
-    </div>
+    <a href="#">Privacybeleid</a> |
+    <a href="#">Voorwaarden</a> |
+    <a href="#">Sitemap</a>
   </footer>
 
-<div style="padding: 20px;">
-</div>
 </body>
 </html>

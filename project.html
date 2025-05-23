@@ -4,38 +4,60 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Mijn Projecten</title>
-
   <style>
-    body {
-      font-family: Arial, sans-serif;
+    html, body {
       margin: 0;
-      background-color: #fff;
-      color: #000;
+      font-family: Arial, sans-serif;
+      background: url('assets/images/background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
     header {
-      background-color: rgb(0, 140, 255);
-      padding: 20px;
+      background: white;
+      padding: 20px 0;
       text-align: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
 
-    nav a {
-      color: black;
+    header nav {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    header nav a {
+      color: #000;
       text-decoration: none;
-      margin: 0 10px;
       font-weight: bold;
+      font-size: 1.1em;
+    }
+
+    header nav a:hover {
+      color: #2f80ed;
+      text-decoration: underline;
     }
 
     header h1 {
-      margin: 10px 0 0;
-      font-size: 2em;
-      color: black;
+      color: #000;
+      margin-top: 10px;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      padding: 40px 20px;
     }
 
     .container {
       max-width: 1200px;
-      margin: 0 auto;
-      padding: 40px 20px;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 40px;
+      border-radius: 15px;
     }
 
     .project-grid {
@@ -47,11 +69,12 @@
     .project-card {
       background-color: #f9f9f9;
       border-radius: 10px;
-      padding: 10px;
+      padding: 15px;
       text-align: center;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       cursor: pointer;
       transition: transform 0.3s ease;
+      color: black;
     }
 
     .project-card:hover {
@@ -66,11 +89,10 @@
     }
 
     .project-card h3 {
-      margin: 15px 0 0;
+      margin-top: 10px;
       font-size: 1.1em;
     }
 
-    /* Popup-styling */
     .popup-overlay {
       position: fixed;
       top: 0;
@@ -112,6 +134,8 @@
     .popup-text-block {
       flex: 1 1 300px;
       text-align: left;
+      color: #333;
+      font-size: 1em;
     }
 
     .popup-text-block h2 {
@@ -131,30 +155,26 @@
       cursor: pointer;
     }
 
-    @media (max-width: 800px) {
+    @media (max-width: 900px) {
       .project-grid {
         grid-template-columns: repeat(2, 1fr);
       }
+    }
 
+    @media (max-width: 600px) {
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
       .popup-content {
         flex-direction: column;
-        align-items: center;
         text-align: center;
       }
-
       .popup-text-block {
         text-align: center;
       }
     }
-
-    @media (max-width: 500px) {
-      .project-grid {
-        grid-template-columns: 1fr;
-      }
-    }
   </style>
 </head>
-
 <body>
   <header>
     <nav>
@@ -165,41 +185,42 @@
     <h1>Mijn Projecten</h1>
   </header>
 
-  <main class="container">
-    <section class="project-grid">
-      <figure class="project-card" data-title="Verkeerslicht Simulatie" data-description="Dit project simuleert een realistisch kruispunt met twee sets verkeerslichten. Elke set bestaat uit drie LEDs (rood, oranje en groen) die wisselen op basis van een geprogrammeerd tijdschema. Deze oefening is bedoeld om logische schakelingen, timers en de sequentiële werking van verkeerslichten te begrijpen en toe te passen.">
-        <img src="assets/images/project1.png" alt="Project 1">
-        <h3>Verkeerslicht Simulatie</h3>
-      </figure>
+  <main>
+    <div class="container">
+      <section class="project-grid">
+        <figure class="project-card" data-title="Verkeerslicht Simulatie" data-img="assets/images/project1.png" data-description="Dit project simuleert een realistisch kruispunt met twee sets verkeerslichten. Elke set bestaat uit drie LEDs (rood, oranje en groen) die wisselen op basis van een geprogrammeerd tijdschema.">
+          <img src="assets/images/project1.png" alt="Project 1">
+          <h3>Verkeerslicht Simulatie</h3>
+        </figure>
 
-      <figure class="project-card" data-title="Servo + Leds" data-description="Een servomotor wordt aangestuurd via een drukknop. De beweging wordt visueel weergegeven met LED-lampjes. Een goede oefening om input en outputcomponenten te combineren.">
-        <img src="assets/images/project2.png" alt="Project 2">
-        <h3>Servo + Leds</h3>
-      </figure>
+        <figure class="project-card" data-title="Servo + Leds" data-img="assets/images/project2.png" data-description="Een servomotor wordt aangestuurd via een drukknop. De beweging wordt visueel weergegeven met LED-lampjes.">
+          <img src="assets/images/project2.png" alt="Project 2">
+          <h3>Servo + Leds</h3>
+        </figure>
 
-      <figure class="project-card" data-title="Rijdend Voertuig" data-description="Een voertuig aangedreven door twee motoren. De richting en snelheid worden bestuurd met een potentiometer en getoond op een LCD-display.">
-        <img src="assets/images/project3.png" alt="Project 3">
-        <h3>Rijdend Voertuig</h3>
-      </figure>
+        <figure class="project-card" data-title="Rijdend Voertuig" data-img="assets/images/project3.png" data-description="Een voertuig aangedreven door twee motoren. De richting en snelheid worden bestuurd met een potentiometer en getoond op een LCD-display.">
+          <img src="assets/images/project3.png" alt="Project 3">
+          <h3>Rijdend Voertuig</h3>
+        </figure>
 
-      <figure class="project-card" data-title="LDR Alarmlicht" data-description="Een lichtsensor (LDR) detecteert omgevingslicht. Wanneer het donker wordt, begint een LED automatisch te knipperen. Ideaal voor lichtgebaseerde detectie.">
-        <img src="assets/images/project4.jpg" alt="Project 4">
-        <h3>LDR Alarmlicht</h3>
-      </figure>
+        <figure class="project-card" data-title="LDR Alarmlicht" data-img="assets/images/project4.jpg" data-description="Een lichtsensor (LDR) detecteert omgevingslicht. Wanneer het donker wordt, begint een LED automatisch te knipperen. Ideaal voor lichtgebaseerde detectie.">
+          <img src="assets/images/project4.jpg" alt="Project 4">
+          <h3>LDR Alarmlicht</h3>
+        </figure>
 
-      <figure class="project-card" data-title="Echt Verkeerslicht" data-description="Een echte Arduino-opstelling met LEDs en weerstanden simuleert de werking van een verkeerslicht. Het circuit is opgebouwd op een breadboard.">
-        <img src="assets/images/project5.png" alt="Project 5">
-        <h3>Echt Verkeerslicht</h3>
-      </figure>
+        <figure class="project-card" data-title="Echt Verkeerslicht" data-img="assets/images/project5.png" data-description="Een echte Arduino-opstelling met LEDs en weerstanden simuleert de werking van een verkeerslicht. Het circuit is opgebouwd op een breadboard.">
+          <img src="assets/images/project5.png" alt="Project 5">
+          <h3>Echt Verkeerslicht</h3>
+        </figure>
 
-      <figure class="project-card" data-title="DC Motorbesturing" data-description="Een DC-motor bestuurd door vier knoppen: vooruit, achteruit, stoppen, en snelheidscontrole. Dit combineert digitale input met motorsturing.">
-        <img src="assets/images/project6.png" alt="Project 6">
-        <h3>DC Motorbesturing</h3>
-      </figure>
-    </section>
+        <figure class="project-card" data-title="DC Motorbesturing" data-img="assets/images/project6.png" data-description="Een DC-motor bestuurd door vier knoppen: vooruit, achteruit, stoppen, en snelheidscontrole. Dit combineert digitale input met motorsturing.">
+          <img src="assets/images/project6.png" alt="Project 6">
+          <h3>DC Motorbesturing</h3>
+        </figure>
+      </section>
+    </div>
   </main>
 
-  <!-- Popup -->
   <div id="popup" class="popup-overlay">
     <div class="popup-content">
       <span class="close-btn">&times;</span>
@@ -211,7 +232,6 @@
     </div>
   </div>
 
-  <!-- Script -->
   <script>
     const popup = document.getElementById('popup');
     const popupImg = document.getElementById('popup-img');
@@ -221,13 +241,13 @@
     const cards = document.querySelectorAll('.project-card');
 
     cards.forEach(card => {
-      const img = card.querySelector('img');
-      const title = card.dataset.title;
-      const description = card.dataset.description;
+      card.addEventListener('click', () => {
+        const title = card.dataset.title;
+        const description = card.dataset.description;
+        const imgSrc = card.dataset.img;
 
-      img.addEventListener('click', () => {
-        popupImg.src = img.src;
-        popupImg.alt = img.alt;
+        popupImg.src = imgSrc;
+        popupImg.alt = title;
         popupTitle.textContent = title;
         popupText.textContent = description;
         popup.style.display = 'flex';
@@ -244,5 +264,11 @@
       }
     });
   </script>
+   <footer>
+    <a href="#">Privacybeleid</a> |
+    <a href="#">Voorwaarden</a> |
+    <a href="#">Sitemap</a>
+  </footer>
+
 </body>
 </html>

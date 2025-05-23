@@ -1,133 +1,207 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacteer ons</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contacteer mij</title>
 
-    <style>
-        body {
-            font-family: sans-serif;
-            margin: 20px;
-            line-height: 1.6;
-        }
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        h1 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #333;
-            
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        input[type="text"],
-        input[type="email"],
-        textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-        textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-        button[type="submit"] {
-            background-color: #007bff;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 1em;
-        }
-        button[type="submit"]:hover {
-            background-color: #0056b3;
-        }
-        .contact-info {
-            margin-top: 30px;
-            padding: 15px;
-            border: 1px solid #eee;
-            border-radius: 4px;
-            background-color: #f9f9f9;
-        }
-        .contact-info h2 {
-            margin-top: 0;
-            margin-bottom: 10px;
-        }
-        .contact-info p {
-            margin-bottom: 8px;
-        }
-        header {
-            background-color: #007bff; /* Blauwe achtergrondkleur */
-            padding: 10px 20px;
-            border-bottom: 1px solid #0056b3;
-            margin-bottom: 20px;
-        }
-        header nav a {
-            margin-right: 15px;
-            text-decoration: none;
-            color: white; /* Witte tekstkleur */
-        }
-        header nav a:hover {
-            text-decoration: underline;
-            color: #cce7ff; /* Lichte kleur bij hover */
-        }
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      font-family: Arial, sans-serif;
+      background: url('./assets/images/background.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
 
-    </style>
+    header {
+      background: white;
+      padding: 20px 0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    header nav {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+    }
+
+    header nav a {
+      color: #000;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+
+    header nav a:hover {
+      color: #2f80ed;
+    }
+
+    main {
+      flex: 1;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+      background-color: rgba(0, 0, 0, 0.6);
+      color: white;
+      padding: 40px;
+      border-radius: 15px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    button[type="submit"] {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+
+    .contact-info {
+      margin-top: 30px;
+      padding: 15px;
+      border: 1px solid #eee;
+      border-radius: 4px;
+      background-color: #f9f9f9;
+      color: #000;
+    }
+
+    .contact-info h2 {
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    #map {
+      height: 300px;
+      width: 100%;
+      border-radius: 4px;
+      margin-top: 30px;
+    }
+
+    footer {
+      background: rgba(0, 0, 0, 0.8);
+      color: #ccc;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      margin-top: auto;
+    }
+
+    footer a {
+      color: #ccc;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
+
 <body>
-    <header>
-        <nav>
-            <a href="portfolio.html"style="background-color:DodgerBlue;"> Portfolio</a>
-            <a href="project.html">Projecten</a>
-            <a href="contact.html">Contacteer ons</a>
-        </nav>
-    </header>
+  <header>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="project.html">Projecten</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
     <div class="container">
-        <h1>Contacteer Ons</h1>
-        <p>heb je een vraag of opmering over de projecten. kan je mij altijd contacteren via de onderstaande forum</p>
+      <h1>Contacteer mij</h1>
+      <p>Heb je een vraag of opmerking over de projecten? Je kunt me bereiken via onderstaand formulier.</p>
 
-        <form action="#" method="POST">
-            <div class="form-group">
-                <label for="naam">Naam:</label>
-                <input type="text" id="naam" name="naam" required>
-            </div>
-            <div class="form-group">
-                <label for="email">E-mailadres:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="onderwerp">Onderwerp:</label>
-                <input type="text" id="onderwerp" name="onderwerp">
-            </div>
-            <div class="form-group">
-                <label for="bericht">Bericht:</label>
-                <textarea id="bericht" name="bericht" rows="5" required></textarea>
-            </div>
-            <button type="submit">Verstuur Bericht</button>
-        </form>
-
-        <div class="contact-info">
-            <h2>Andere Contactmogelijkheden</h2>
-            <p>Je kunt ons ook bereiken via:</p>
-            <p><strong>E-mail:</strong> <a href="mailto:langers.sam@gmail.com">langers.sam@gmail.com</a></p>
-            <p><strong>Telefoon:</strong> +32 498 53 60 79</p>
+      <form action="#" method="POST">
+        <div class="form-group">
+          <label for="naam">Naam:</label>
+          <input type="text" id="naam" name="naam" required />
         </div>
+        <div class="form-group">
+          <label for="email">E-mailadres:</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div class="form-group">
+          <label for="onderwerp">Onderwerp:</label>
+          <input type="text" id="onderwerp" name="onderwerp" />
+        </div>
+        <div class="form-group">
+          <label for="bericht">Bericht:</label>
+          <textarea id="bericht" name="bericht" rows="5" required></textarea>
+        </div>
+        <button type="submit">Verstuur Bericht</button>
+      </form>
+
+      <div class="contact-info">
+        <h2>Andere Contactmogelijkheden</h2>
+        <p><strong>E-mail:</strong> <a href="mailto:langers.sam@gmail.com">langers.sam@gmail.com</a></p>
+        <p><strong>Telefoon:</strong> +32 498 53 60 79</p>
+      </div>
+
+      <div id="map"></div>
     </div>
+  </main>
+
+  <footer>
+    <a href="#">Privacybeleid</a> |
+    <a href="#">Voorwaarden</a> |
+    <a href="#">Sitemap</a>
+  </footer>
+
+  <script>
+    const map = L.map('map').setView([51.229723, 4.41583], 16);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap-bijdragers'
+    }).addTo(map);
+
+    L.marker([51.229723, 4.41583]).addTo(map)
+      .bindPopup('AP Hogeschool – Campus Ellermanstraat<br>Ellermanstraat 1, 2060 Antwerpen')
+      .openPopup();
+  </script>
 </body>
 </html>
