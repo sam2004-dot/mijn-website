@@ -72,20 +72,21 @@
             gap: 40px; /* Creëert een ruimte van 40 pixels tussen de flex-items (aside en img). */
             align-items: center; /* Lijn flex-items (aside en img) verticaal in het midden uit. */
             justify-content: center; /* Centreert de items horizontaal wanneer ze 'wrappen'. */
+            text-align: left; /* Standaard links uitlijnen voor desktop. Wordt overschreven in media query voor mobiel. */
         }
 
         .container aside {
             flex: 1 1 300px; /* Flex shorthand voor het tekstblok. Het mag groeien ('flex-grow: 1'), krimpen ('flex-shrink: 1') en heeft een basisbreedte van 300 pixels. */
-            text-align: left; /* Standaard links uitlijnen voor desktop. */
         }
 
+        /* --- Stijlen voor de afbeelding (algemeen, dus ook desktop) --- */
         .container img {
-            flex: 1 1 300px; /* Flex shorthand voor de afbeelding. Het mag groeien ('flex-grow: 1'), krimpen ('flex-shrink: 1') en heeft een basisbreedte van 300 pixels. */
-            max-width: 100%; /* Zorgt ervoor dat de afbeelding nooit breder wordt dan zijn ouder. */
-            height: auto; /* Behoudt de aspect ratio van de afbeelding. */
-            border-radius: 10px; /* Afgeronde hoeken voor de afbeelding. */
-            object-fit: cover; /* Zorgt ervoor dat de afbeelding de container vult, en bijsnijdt indien nodig, om de beeldverhouding te behouden. */
-            /* De 'style="max-width: 40%;"' die je eerder had, wordt nu hier door flex-basis en max-width geregeld voor betere flexibiliteit. */
+            max-width: 40%; /* Op desktop is de max-breedte 40% van de container. */
+            height: auto; /* Behoudt de aspect ratio. */
+            border-radius: 10px; /* Afgeronde hoeken. */
+            object-fit: cover; /* Zorgt ervoor dat de afbeelding de container vult, en bijsnijdt indien nodig. */
+            flex-shrink: 0; /* Voorkomt dat de afbeelding krimpt op desktop. */
+            /* flex-basis: 300px; is al gedefinieerd via flex: 1 1 300px; op de parent */
         }
 
         .container h2 {
@@ -147,12 +148,13 @@
                 text-align: center; /* Zorgt ervoor dat de tekst in de aside ook gecentreerd is. */
             }
 
+            /* --- Stijlen voor de afbeelding op mobiel (binnen de media query) --- */
             .container img {
                 order: 1; /* De afbeelding wordt vóór de tekst weergegeven. */
-                width: 90%; /* De afbeelding neemt 90% van de breedte van de container in beslag voor betere zichtbaarheid op mobiel. */
-                max-width: 300px; /* Voorkomt dat de afbeelding te breed wordt op grotere tablets. */
+                max-width: 90%; /* Zorgt ervoor dat de afbeelding maximaal 90% van de containerbreedte inneemt. */
+                width: auto; /* Laat de breedte automatisch bepalen door max-width. */
                 height: auto; /* Behoudt de aspect ratio. */
-                object-fit: cover; /* Zorgt ervoor dat de afbeelding de container vult, en bijsnijdt indien nodig. */
+                /* object-fit: cover is al gedefinieerd bovenaan. */
             }
 
             .container p {
@@ -173,13 +175,18 @@
                 font-size: 1.5em; /* Verdere verlaging van de H1 titel lettergrootte. */
             }
 
+            main {
+                padding: 15px 10px; /* Nog minder padding voor de main sectie. */
+            }
+
             .container {
                 padding: 15px; /* Nog minder padding voor de container op zeer kleine schermen. */
                 gap: 20px; /* Nog minder ruimte tussen items. */
             }
 
             .container img {
-                width: 95%; /* De afbeelding neemt 95% van de breedte van de container in beslag. */
+                max-width: 95%; /* De afbeelding neemt 95% van de breedte van de container in beslag. */
+                width: auto; /* Laat de breedte automatisch bepalen door max-width. */
             }
 
             .container p {
