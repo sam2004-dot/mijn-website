@@ -1,156 +1,220 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Over mij</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Over mij</title>
+    <style>
+        /* Dit tag opent een intern CSS-stijlblok. Alle CSS-regels binnen dit blok definiëren de opmaak van de HTML-elementen op deze pagina. */
+        html, body {
+            height: 100%; /* Zorgt ervoor dat zowel 'html' als 'body' de volledige hoogte van de viewport innemen. Essentieel voor de 'sticky footer'. */
+            margin: 0; /* Verwijdert de standaard buitenmarge die browsers toevoegen. */
+            font-family: Arial, sans-serif; /* Stelt het standaard lettertype in op Arial, en als dat niet beschikbaar is, een generiek schreefloos lettertype. */
+            background: url('./assets/images/background.jpg') no-repeat center center fixed; /* Stelt een achtergrondafbeelding in ('background.jpg').
+                                                                                                  'no-repeat': De afbeelding wordt niet herhaald.
+                                                                                                  'center center': De afbeelding wordt gecentreerd.
+                                                                                                  'fixed': De achtergrondafbeelding blijft op zijn plaats wanneer de gebruiker scrollt. */
+            background-size: cover; /* Zorgt ervoor dat de achtergrondafbeelding de hele beschikbare ruimte bedekt, zonder vervorming, en snijdt eventueel delen af. */
+            color: white; /* Stelt de standaard tekstkleur in op wit voor de hele pagina. */
+            display: flex; /* Maakt de '<body>' een flex-container. Dit is een krachtige lay-out methode in CSS. */
+            flex-direction: column; /* Zorgt ervoor dat flex-items (header, main, footer) verticaal onder elkaar worden geplaatst. */
+        }
 
-  <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: url('./assets/images/background.jpg') no-repeat center center fixed;
-      background-size: cover;
-      color: white;
-      display: flex;
-      flex-direction: column;
-    }
+        header {
+            background: white; /* Witte achtergrondkleur. */
+            padding: 20px 0; /* 20 pixels opvulling (padding) boven en onder, 0 pixels links en rechts. */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Voegt een subtiele schaduw toe aan de header voor een diepte-effect. */
+            text-align: center; /* Centreert de tekst binnen de header. */
+        }
 
-    header {
-      background: white;
-      padding: 20px 0;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      text-align: center;
-    }
+        header nav {
+            display: flex; /* Maakt de navigatie een flex-container, waardoor de links flexibel kunnen worden geplaatst. */
+            justify-content: center; /* Centreert de navigatielinks horizontaal. */
+            gap: 30px; /* Creëert een ruimte van 30 pixels tussen de navigatielinks. */
+            margin-bottom: 10px; /* Voegt een kleine marge onder de navigatie toe. */
+        }
 
-    header nav {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      margin-bottom: 10px;
-    }
+        header nav a {
+            color: #000; /* Zwarte tekstkleur. */
+            text-decoration: none; /* Verwijdert de standaard onderstreping van links. */
+            font-weight: bold; /* Maakt de tekst vetgedrukt. */
+            font-size: 1.1em; /* Stelt de lettergrootte in op 1.1 keer de standaard lettergrootte van het oudere element. */
+            transition: color 0.3s; /* Vloeiende overgang voor hover-effect. */
+        }
 
-    header nav a {
-      color: #000;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1.1em;
-    }
+        header nav a:hover {
+            color: #2f80ed; /* Verandert de tekstkleur naar een specifieke blauwtint wanneer erover gehoverd wordt. */
+            text-decoration: underline; /* Voegt een onderstreping toe wanneer erover gehoverd wordt. */
+        }
 
-    header nav a:hover {
-      color: #2f80ed;
-      text-decoration: underline;
-    }
+        header h1 {
+            margin: 0; /* Verwijdert de standaard marges van de H1. */
+            font-size: 2em; /* Stelt de lettergrootte in op 2 keer de standaard. */
+            color: #000; /* Zwarte tekstkleur. */
+        }
 
-    header h1 {
-      margin: 0;
-      font-size: 2em;
-      color: #000;
-    }
+        main {
+            flex: 1; /* Dit is een flex shorthand eigenschap. Het zorgt ervoor dat het 'main'-element de beschikbare verticale ruimte inneemt tussen de header en de footer. Als er extra ruimte is, zal dit element 'groeien'. */
+            display: flex; /* Maakt de 'main' een flex-container. */
+            justify-content: center; /* Centreert de inhoud (de '.container') horizontaal. */
+            align-items: center; /* Centreert de inhoud (de '.container') verticaal. */
+            padding: 40px 20px; /* 40 pixels opvulling boven en onder, 20 pixels links en rechts. */
+            box-sizing: border-box; /* Zorgt ervoor dat padding wordt meegerekend in de totale breedte van het element. */
+        }
 
-    main {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      padding: 40px 20px;
-    }
+        .container {
+            max-width: 900px; /* Maximale breedte van 900 pixels. */
+            background-color: rgba(0, 0, 0, 0.6); /* Semi-transparante zwarte achtergrondkleur (0.6 is de alpha-waarde, oftewel 60% dekking). */
+            padding: 40px; /* 40 pixels opvulling aan alle zijden. */
+            border-radius: 15px; /* Rondt de hoeken van de container af met een radius van 15 pixels. */
+            display: flex; /* Maakt de container een flex-container. */
+            flex-wrap: wrap; /* Zorgt ervoor dat flex-items naar de volgende regel gaan als er te weinig ruimte is (belangrijk voor responsiviteit). */
+            gap: 40px; /* Creëert een ruimte van 40 pixels tussen de flex-items (aside en img). */
+            align-items: center; /* Lijn flex-items (aside en img) verticaal in het midden uit. */
+            justify-content: center; /* Centreert de items horizontaal wanneer ze 'wrappen'. */
+        }
 
-    .container {
-      max-width: 900px;
-      background-color: rgba(0, 0, 0, 0.6);
-      padding: 40px;
-      border-radius: 15px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 40px;
-      align-items: center;
-    }
+        .container aside {
+            flex: 1 1 300px; /* Flex shorthand voor het tekstblok. Het mag groeien ('flex-grow: 1'), krimpen ('flex-shrink: 1') en heeft een basisbreedte van 300 pixels. */
+            text-align: left; /* Standaard links uitlijnen voor desktop. */
+        }
 
-    .container aside {
-      flex: 1 1 300px;
-    }
+        .container img {
+            flex: 1 1 300px; /* Flex shorthand voor de afbeelding. Het mag groeien ('flex-grow: 1'), krimpen ('flex-shrink: 1') en heeft een basisbreedte van 300 pixels. */
+            max-width: 100%; /* Zorgt ervoor dat de afbeelding nooit breder wordt dan zijn ouder. */
+            height: auto; /* Behoudt de aspect ratio van de afbeelding. */
+            border-radius: 10px; /* Afgeronde hoeken voor de afbeelding. */
+            object-fit: cover; /* Zorgt ervoor dat de afbeelding de container vult, en bijsnijdt indien nodig, om de beeldverhouding te behouden. */
+            /* De 'style="max-width: 40%;"' die je eerder had, wordt nu hier door flex-basis en max-width geregeld voor betere flexibiliteit. */
+        }
 
-    .container img {
-      flex: 1 1 300px;
-      max-width: 100%;
-      border-radius: 10px;
-    }
+        .container h2 {
+            color: #2f80ed; /* Een specifieke blauwtint voor de H2 titel. */
+            margin-top: 0; /* Verwijdert de standaard bovenmarge. */
+        }
 
-    .container h2 {
-      color: #2f80ed;
-      margin-top: 0;
-    }
-    footer {
-      background: rgba(0, 0, 0, 0.8);
-      color: #ccc;
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9em;
-      margin-top: auto;
-    }
+        footer {
+            background: rgba(0, 0, 0, 0.8); /* Semi-transparante zwarte achtergrond. */
+            color: #ccc; /* Lichtgrijze tekstkleur. */
+            text-align: center; /* Centreert de tekst. */
+            padding: 20px; /* Opvulling. */
+            font-size: 0.9em; /* Iets kleinere lettergrootte. */
+            margin-top: auto; /* Dit is cruciaal voor de sticky footer. Omdat de 'body' een flex-container is met 'flex-direction: column', duwt 'margin-top: auto' de footer naar de onderkant van de pagina, ongeacht de inhoud van de 'main'. */
+        }
 
-    footer a {
-      color: #ccc;
-      margin: 0 10px;
-      text-decoration: none;
-    }
+        footer a {
+            color: #ccc; /* Lichtgrijze tekstkleur. */
+            margin: 0 10px; /* 10 pixels marge links en rechts. */
+            text-decoration: none; /* Verwijdert de onderstreping. */
+            transition: color 0.3s; /* Vloeiende overgang voor hover-effect. */
+        }
 
-    footer a:hover {
-      text-decoration: underline;
-    }
+        footer a:hover {
+            text-decoration: underline; /* Voegt een onderstreping toe wanneer de muisaanwijzer over een footerlink beweegt. */
+            color: #2f80ed; /* Verandert de tekstkleur bij hover. */
+        }
 
-    @media (max-width: 768px) {
-      .container {
-        flex-direction: column;
-        text-align: center;
-      }
+        /* --- Media Queries voor Responsiviteit --- */
 
-      .container aside {
-        order: 2;
-      }
+        @media (max-width: 768px) { /* Dit is een media query. De CSS-regels binnen dit blok worden toegepast wanneer de breedte van de viewport maximaal 768 pixels is (typisch voor tablets in portretmodus en grotere telefoons). */
+            header nav {
+                flex-direction: column; /* De navigatielinks worden verticaal gestapeld. */
+                gap: 15px; /* De ruimte tussen de links wordt kleiner. */
+                margin-bottom: 15px; /* Meer marge onder de navigatie op mobiel. */
+            }
 
-      .container img {
-        order: 1;
-        width: 80%;
-      }
-    }
-  </style>
+            header nav a {
+                font-size: 1em; /* Pas de lettergrootte van de navigatielinks aan voor betere leesbaarheid op mobiel. */
+            }
+
+            header h1 {
+                font-size: 1.8em; /* Een iets kleinere lettergrootte voor de H1 titel op mobiel. */
+            }
+
+            main {
+                padding: 20px 15px; /* Minder padding voor de main sectie op kleinere schermen. */
+            }
+
+            .container {
+                flex-direction: column; /* De afbeelding en tekst in de container worden verticaal gestapeld. */
+                text-align: center; /* De tekst in de container wordt gecentreerd. */
+                padding: 25px; /* Minder padding voor de container op kleinere schermen. */
+                gap: 30px; /* Minder ruimte tussen items op mobiel. */
+            }
+
+            .container aside {
+                order: 2; /* De aside (tekst) wordt na de afbeelding weergegeven. */
+                text-align: center; /* Zorgt ervoor dat de tekst in de aside ook gecentreerd is. */
+            }
+
+            .container img {
+                order: 1; /* De afbeelding wordt vóór de tekst weergegeven. */
+                width: 90%; /* De afbeelding neemt 90% van de breedte van de container in beslag voor betere zichtbaarheid op mobiel. */
+                max-width: 300px; /* Voorkomt dat de afbeelding te breed wordt op grotere tablets. */
+                height: auto; /* Behoudt de aspect ratio. */
+                object-fit: cover; /* Zorgt ervoor dat de afbeelding de container vult, en bijsnijdt indien nodig. */
+            }
+
+            .container p {
+                font-size: 0.95em; /* Iets kleinere lettergrootte voor paragrafen voor betere leesbaarheid op mobiel. */
+            }
+        }
+
+        @media (max-width: 480px) { /* Nog een media query, voor schermen maximaal 480 pixels breed (typisch voor smartphones). */
+            header nav {
+                gap: 10px; /* Nog kleinere ruimte tussen navigatielinks. */
+            }
+
+            header nav a {
+                font-size: 0.9em; /* Kleinere lettergrootte voor navigatielinks. */
+            }
+
+            header h1 {
+                font-size: 1.5em; /* Verdere verlaging van de H1 titel lettergrootte. */
+            }
+
+            .container {
+                padding: 15px; /* Nog minder padding voor de container op zeer kleine schermen. */
+                gap: 20px; /* Nog minder ruimte tussen items. */
+            }
+
+            .container img {
+                width: 95%; /* De afbeelding neemt 95% van de breedte van de container in beslag. */
+            }
+
+            .container p {
+                font-size: 0.85em; /* Verdere verlaging van de paragraaf lettergrootte voor betere pasvorm. */
+            }
+        }
+    </style>
 </head>
 
 <body>
-  <header>
-    <nav>
-      <a href="project.html">Projecten</a>
-      <a href="contact.html">Contacteer mij </a>
-      <a href="over.html">Over</a>
-    </nav>
-    <h1>Over mij</h1>
-  </header>
+    <header>
+        <nav>
+            <a href="index.html">Home</a> <a href="project.html">Projecten</a> <a href="over.html">Over</a> <a href="contact.html">Contact</a> </nav>
+        <h1>Over mij</h1> </header>
 
-  <main>
-    <section class="container">
-      <aside>
-        <h2>Wie ben ik?</h2>
-        <p>
-          Hallo! Ik ben Sam, een gepassioneerde student en maker met een grote interesse in technologie, elektronica en creatieve projecten. Of het nu gaat om het bouwen van een slimme schakeling, het ontwerpen van een website of het bedenken van iets nieuws met Arduino, ik ben altijd op zoek naar manieren om mijn vaardigheden te verbeteren en mijn kennis uit te breiden.
-        </p>
-        <p>
-          Op deze website deel ik enkele van mijn projecten, experimenten en wat me inspireert. Elk project is een kans om iets bij te leren en verder te groeien in wat ik doe. Ik ben altijd nieuwsgierig naar nieuwe tools en technieken, en ik probeer graag dingen uit.
-        </p>
-        <p>
-          Bedankt dat je een kijkje neemt! Heb je vragen, ideeën of gewoon zin om te praten over technologie? Aarzel niet om contact op te nemen.
-        </p>
-      </aside>
+    <main>
+        <section class="container">
+            <aside>
+                <h2>Wie ben ik?</h2> <p>
+                    Hallo! Ik ben Sam, een gepassioneerde student en maker met een grote interesse in technologie, elektronica en creatieve projecten. Of het nu gaat om het bouwen van een slimme schakeling, het ontwerpen van een website of het bedenken van iets nieuws met Arduino, ik ben altijd op zoek naar manieren om mijn vaardigheden te verbeteren en mijn kennis uit te breiden.
+                </p>
+                <p>
+                    Op deze website deel ik enkele van mijn projecten, experimenten en wat me inspireert. Elk project is een kans om iets bij te leren en verder te groeien in wat ik doe. Ik ben altijd nieuwsgierig naar nieuwe tools en technieken, en ik probeer graag dingen uit.
+                </p>
+                <p>
+                    Bedankt dat je een kijkje neemt! Heb je vragen, ideeën of gewoon zin om te praten over technologie? Aarzel niet om contact op te nemen.
+                </p>
+            </aside>
 
-      <img src="assets/images/foto.png" alt="foto" style="max-width: 40%;">
-    </section>
-  </main>
-   <footer>
-    <a href="#">Privacybeleid</a> |
-    <a href="#">Voorwaarden</a> |
-    <a href="#">Sitemap</a>
-  </footer>
+            <img src="assets/images/foto.png" alt="foto">
+            </section>
+    </main>
+
+    <footer>
+        <a href="#">Privacybeleid</a> | <a href="#">Voorwaarden</a> | <a href="#">Sitemap</a> </footer>
 
 </body>
 </html>
