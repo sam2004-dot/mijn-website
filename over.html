@@ -4,196 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Over mij</title>
-    <style>
-        /* Dit tag opent een intern CSS-stijlblok. Alle CSS-regels binnen dit blok definiëren de opmaak van de HTML-elementen op deze pagina. */
-        html, body {
-            height: 100%; /* Zorgt ervoor dat zowel 'html' als 'body' de volledige hoogte van de viewport innemen. Essentieel voor de 'sticky footer'. */
-            margin: 0; /* Verwijdert de standaard buitenmarge die browsers toevoegen. */
-            font-family: Arial, sans-serif; /* Stelt het standaard lettertype in op Arial, en als dat niet beschikbaar is, een generiek schreefloos lettertype. */
-            background: url('./assets/images/background.jpg') no-repeat center center fixed; /* Stelt een achtergrondafbeelding in ('background.jpg').
-                                                                                                  'no-repeat': De afbeelding wordt niet herhaald.
-                                                                                                  'center center': De afbeelding wordt gecentreerd.
-                                                                                                  'fixed': De achtergrondafbeelding blijft op zijn plaats wanneer de gebruiker scrollt. */
-            background-size: cover; /* Zorgt ervoor dat de achtergrondafbeelding de hele beschikbare ruimte bedekt, zonder vervorming, en snijdt eventueel delen af. */
-            color: white; /* Stelt de standaard tekstkleur in op wit voor de hele pagina. */
-            display: flex; /* Maakt de '<body>' een flex-container. Dit is een krachtige lay-out methode in CSS. */
-            flex-direction: column; /* Zorgt ervoor dat flex-items (header, main, footer) verticaal onder elkaar worden geplaatst. */
-        }
+  <link rel="stylesheet" href="css/over.css">
+  <style>
+     html, body {
+        height: 100%;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        font-family: Arial, sans-serif;
+        background: url('./assets/images/background.jpg') no-repeat center center fixed;
+        background-size: cover;
+        color: white;
+    }
 
-        header {
-            background: white; /* Witte achtergrondkleur. */
-            padding: 20px 0; /* 20 pixels opvulling (padding) boven en onder, 0 pixels links en rechts. */
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Voegt een subtiele schaduw toe aan de header voor een diepte-effect. */
-            text-align: center; /* Centreert de tekst binnen de header. */
-        }
+  </style>
 
-        header nav {
-            display: flex; /* Maakt de navigatie een flex-container, waardoor de links flexibel kunnen worden geplaatst. */
-            justify-content: center; /* Centreert de navigatielinks horizontaal. */
-            gap: 30px; /* Creëert een ruimte van 30 pixels tussen de navigatielinks. */
-            margin-bottom: 10px; /* Voegt een kleine marge onder de navigatie toe. */
-        }
 
-        header nav a {
-            color: #000; /* Zwarte tekstkleur. */
-            text-decoration: none; /* Verwijdert de standaard onderstreping van links. */
-            font-weight: bold; /* Maakt de tekst vetgedrukt. */
-            font-size: 1.1em; /* Stelt de lettergrootte in op 1.1 keer de standaard lettergrootte van het oudere element. */
-            transition: color 0.3s; /* Vloeiende overgang voor hover-effect. */
-        }
-
-        header nav a:hover {
-            color: #2f80ed; /* Verandert de tekstkleur naar een specifieke blauwtint wanneer erover gehoverd wordt. */
-            text-decoration: underline; /* Voegt een onderstreping toe wanneer erover gehoverd wordt. */
-        }
-
-        header h1 {
-            margin: 0; /* Verwijdert de standaard marges van de H1. */
-            font-size: 2em; /* Stelt de lettergrootte in op 2 keer de standaard. */
-            color: #000; /* Zwarte tekstkleur. */
-        }
-
-        main {
-            flex: 1; /* Dit is een flex shorthand eigenschap. Het zorgt ervoor dat het 'main'-element de beschikbare verticale ruimte inneemt tussen de header en de footer. Als er extra ruimte is, zal dit element 'groeien'. */
-            display: flex; /* Maakt de 'main' een flex-container. */
-            justify-content: center; /* Centreert de inhoud (de '.container') horizontaal. */
-            align-items: center; /* Centreert de inhoud (de '.container') verticaal. */
-            padding: 40px 20px; /* 40 pixels opvulling boven en onder, 20 pixels links en rechts. */
-            box-sizing: border-box; /* Zorgt ervoor dat padding wordt meegerekend in de totale breedte van het element. */
-        }
-
-        .container {
-            max-width: 900px; /* Maximale breedte van 900 pixels. */
-            background-color: rgba(0, 0, 0, 0.6); /* Semi-transparante zwarte achtergrondkleur (0.6 is de alpha-waarde, oftewel 60% dekking). */
-            padding: 40px; /* 40 pixels opvulling aan alle zijden. */
-            border-radius: 15px; /* Rondt de hoeken van de container af met een radius van 15 pixels. */
-            display: flex; /* Maakt de container een flex-container. */
-            flex-wrap: wrap; /* Zorgt ervoor dat flex-items naar de volgende regel gaan als er te weinig ruimte is (belangrijk voor responsiviteit). */
-            gap: 40px; /* Creëert een ruimte van 40 pixels tussen de flex-items (aside en img). */
-            align-items: center; /* Lijn flex-items (aside en img) verticaal in het midden uit. */
-            justify-content: center; /* Centreert de items horizontaal wanneer ze 'wrappen'. */
-            text-align: left; /* Standaard links uitlijnen voor desktop. Wordt overschreven in media query voor mobiel. */
-        }
-
-        .container aside {
-            flex: 1 1 300px; /* Flex shorthand voor het tekstblok. Het mag groeien ('flex-grow: 1'), krimpen ('flex-shrink: 1') en heeft een basisbreedte van 300 pixels. */
-        }
-
-        /* --- Stijlen voor de afbeelding (algemeen, dus ook desktop) --- */
-        .container img {
-            max-width: 40%; /* Op desktop is de max-breedte 40% van de container. */
-            height: auto; /* Behoudt de aspect ratio. */
-            border-radius: 10px; /* Afgeronde hoeken. */
-            object-fit: cover; /* Zorgt ervoor dat de afbeelding de container vult, en bijsnijdt indien nodig. */
-            flex-shrink: 0; /* Voorkomt dat de afbeelding krimpt op desktop. */
-            /* flex-basis: 300px; is al gedefinieerd via flex: 1 1 300px; op de parent */
-        }
-
-        .container h2 {
-            color: #2f80ed; /* Een specifieke blauwtint voor de H2 titel. */
-            margin-top: 0; /* Verwijdert de standaard bovenmarge. */
-        }
-
-        footer {
-            background: rgba(0, 0, 0, 0.8); /* Semi-transparante zwarte achtergrond. */
-            color: #ccc; /* Lichtgrijze tekstkleur. */
-            text-align: center; /* Centreert de tekst. */
-            padding: 20px; /* Opvulling. */
-            font-size: 0.9em; /* Iets kleinere lettergrootte. */
-            margin-top: auto; /* Dit is cruciaal voor de sticky footer. Omdat de 'body' een flex-container is met 'flex-direction: column', duwt 'margin-top: auto' de footer naar de onderkant van de pagina, ongeacht de inhoud van de 'main'. */
-        }
-
-        footer a {
-            color: #ccc; /* Lichtgrijze tekstkleur. */
-            margin: 0 10px; /* 10 pixels marge links en rechts. */
-            text-decoration: none; /* Verwijdert de onderstreping. */
-            transition: color 0.3s; /* Vloeiende overgang voor hover-effect. */
-        }
-
-        footer a:hover {
-            text-decoration: underline; /* Voegt een onderstreping toe wanneer de muisaanwijzer over een footerlink beweegt. */
-            color: #2f80ed; /* Verandert de tekstkleur bij hover. */
-        }
-
-        /* --- Media Queries voor Responsiviteit --- */
-
-        @media (max-width: 768px) { /* Dit is een media query. De CSS-regels binnen dit blok worden toegepast wanneer de breedte van de viewport maximaal 768 pixels is (typisch voor tablets in portretmodus en grotere telefoons). */
-            header nav {
-                flex-direction: column; /* De navigatielinks worden verticaal gestapeld. */
-                gap: 15px; /* De ruimte tussen de links wordt kleiner. */
-                margin-bottom: 15px; /* Meer marge onder de navigatie op mobiel. */
-            }
-
-            header nav a {
-                font-size: 1em; /* Pas de lettergrootte van de navigatielinks aan voor betere leesbaarheid op mobiel. */
-            }
-
-            header h1 {
-                font-size: 1.8em; /* Een iets kleinere lettergrootte voor de H1 titel op mobiel. */
-            }
-
-            main {
-                padding: 20px 15px; /* Minder padding voor de main sectie op kleinere schermen. */
-            }
-
-            .container {
-                flex-direction: column; /* De afbeelding en tekst in de container worden verticaal gestapeld. */
-                text-align: center; /* De tekst in de container wordt gecentreerd. */
-                padding: 25px; /* Minder padding voor de container op kleinere schermen. */
-                gap: 30px; /* Minder ruimte tussen items op mobiel. */
-            }
-
-            .container aside {
-                order: 2; /* De aside (tekst) wordt na de afbeelding weergegeven. */
-                text-align: center; /* Zorgt ervoor dat de tekst in de aside ook gecentreerd is. */
-            }
-
-            /* --- Stijlen voor de afbeelding op mobiel (binnen de media query) --- */
-            .container img {
-                order: 1; /* De afbeelding wordt vóór de tekst weergegeven. */
-                max-width: 90%; /* Zorgt ervoor dat de afbeelding maximaal 90% van de containerbreedte inneemt. */
-                width: auto; /* Laat de breedte automatisch bepalen door max-width. */
-                height: auto; /* Behoudt de aspect ratio. */
-                /* object-fit: cover is al gedefinieerd bovenaan. */
-            }
-
-            .container p {
-                font-size: 0.95em; /* Iets kleinere lettergrootte voor paragrafen voor betere leesbaarheid op mobiel. */
-            }
-        }
-
-        @media (max-width: 480px) { /* Nog een media query, voor schermen maximaal 480 pixels breed (typisch voor smartphones). */
-            header nav {
-                gap: 10px; /* Nog kleinere ruimte tussen navigatielinks. */
-            }
-
-            header nav a {
-                font-size: 0.9em; /* Kleinere lettergrootte voor navigatielinks. */
-            }
-
-            header h1 {
-                font-size: 1.5em; /* Verdere verlaging van de H1 titel lettergrootte. */
-            }
-
-            main {
-                padding: 15px 10px; /* Nog minder padding voor de main sectie. */
-            }
-
-            .container {
-                padding: 15px; /* Nog minder padding voor de container op zeer kleine schermen. */
-                gap: 20px; /* Nog minder ruimte tussen items. */
-            }
-
-            .container img {
-                max-width: 95%; /* De afbeelding neemt 95% van de breedte van de container in beslag. */
-                width: auto; /* Laat de breedte automatisch bepalen door max-width. */
-            }
-
-            .container p {
-                font-size: 0.85em; /* Verdere verlaging van de paragraaf lettergrootte voor betere pasvorm. */
-            }
-        }
-    </style>
 </head>
 
 <body>

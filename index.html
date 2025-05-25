@@ -4,174 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Home - Mijn Website</title>
+    <link rel="stylesheet" href="css/style.css">
     <style>
-        /* Dit tag opent een intern CSS-stijlblok. Alle CSS-regels binnen dit blok definiëren de opmaak van de HTML-elementen op deze pagina. */
-        html, body {
-            height: 100%; /* Zorgt ervoor dat zowel 'html' als 'body' de volledige hoogte van de viewport innemen. Essentieel voor de 'sticky footer'. */
-            margin: 0; /* Verwijdert de standaard buitenmarge die browsers toevoegen. */
-            font-family: Arial, sans-serif; /* Stelt het standaard lettertype in op Arial, en als dat niet beschikbaar is, een generiek schreefloos lettertype. */
-            background: url('./assets/images/background.jpg') no-repeat center center fixed; /* Stelt een achtergrondafbeelding in ('background.jpg').
-                                                                                                  'no-repeat': De afbeelding wordt niet herhaald.
-                                                                                                  'center center': De afbeelding wordt gecentreerd.
-                                                                                                  'fixed': De achtergrondafbeelding blijft op zijn plaats wanneer de gebruiker scrollt. */
-            background-size: cover; /* Zorgt ervoor dat de achtergrondafbeelding de hele beschikbare ruimte bedekt, zonder vervorming, en snijdt eventueel delen af. */
-            color: #fff; /* Stelt de standaard tekstkleur in op wit voor de hele pagina. */
-            display: flex; /* Maakt de '<body>' een flex-container. Dit is een krachtige lay-out methode in CSS. */
-            flex-direction: column; /* Zorgt ervoor dat flex-items (header, main, footer) verticaal onder elkaar worden geplaatst. */
-        }
+      html, body {
+        height: 100%;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        font-family: Arial, sans-serif;
+        background: url('./assets/images/background.jpg') no-repeat center center fixed;
+        background-size: cover;
+        color: white;
+    }
 
-        header {
-            background: rgba(255, 255, 255, 0.9); /* Semi-transparante witte achtergrondkleur voor de header. */
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Voegt een subtiele schaduw toe aan de header voor een diepte-effect. */
-            padding: 20px 0; /* 20 pixels opvulling (padding) boven en onder, 0 pixels links en rechts. */
-            position: sticky; /* Zorgt ervoor dat de header op zijn plaats blijft wanneer de gebruiker scrollt. */
-            top: 0; /* Plakt de header aan de bovenkant van de viewport. */
-            z-index: 1000; /* Zorgt ervoor dat de header boven andere elementen wordt weergegeven. */
-        }
-
-        header nav {
-            display: flex; /* Maakt de navigatie een flex-container, waardoor de links flexibel kunnen worden geplaatst. */
-            justify-content: center; /* Centreert de navigatielinks horizontaal. */
-            gap: 40px; /* Creëert een ruimte van 40 pixels tussen de navigatielinks. */
-        }
-
-        header nav a {
-            color: #333; /* Donkergrijze tekstkleur. */
-            text-decoration: none; /* Verwijdert de standaard onderstreping van links. */
-            font-weight: bold; /* Maakt de tekst vetgedrukt. */
-            font-size: 1.1em; /* Stelt de lettergrootte in op 1.1 keer de standaard lettergrootte van het oudere element. */
-            transition: color 0.3s; /* Zorgt voor een vloeiende overgang van de tekstkleur wanneer erover gehoverd wordt. */
-        }
-
-        header nav a:hover {
-            color: #2f80ed; /* Verandert de tekstkleur naar een specifieke blauwtint wanneer erover gehoverd wordt. */
-        }
-
-        main {
-            flex: 1; /* Dit is een flex shorthand eigenschap. Het zorgt ervoor dat het 'main'-element de beschikbare verticale ruimte inneemt tussen de header en de footer. Als er extra ruimte is, zal dit element 'groeien'. */
-            display: flex; /* Maakt de 'main' een flex-container om de inhoud te centreren. */
-            justify-content: center; /* Centreert de inhoud horizontaal. */
-            align-items: center; /* Centreert de inhoud verticaal, zodat de intro-sectie in het midden van de beschikbare ruimte verschijnt. */
-            padding: 20px; /* Een beetje padding aan de zijkanten voor kleinere schermen om te voorkomen dat inhoud de randen raakt. */
-            box-sizing: border-box; /* Zorgt ervoor dat padding en border worden meegerekend in de totale breedte/hoogte van het element. */
-        }
-
-        .intro {
-            background-color: rgba(0, 0, 0, 0.6); /* Semi-transparante zwarte achtergrondkleur (0.6 is de alpha-waarde, oftewel 60% dekking). */
-            margin: 40px auto; /* 40 pixels buitenmarge boven en onder, en auto links en rechts om het horizontaal te centreren. */
-            padding: 40px; /* 40 pixels opvulling aan alle zijden. */
-            max-width: 1000px; /* Maximale breedte van 1000 pixels. */
-            border-radius: 12px; /* Rondt de hoeken van de container af met een radius van 12 pixels. */
-            display: flex; /* Maakt de intro-sectie een flex-container, waardoor de afbeelding en tekst naast elkaar kunnen staan. */
-            gap: 40px; /* Creëert een ruimte van 40 pixels tussen de afbeelding en de tekst. */
-            align-items: center; /* Lijn flex-items (afbeelding en tekst) verticaal in het midden uit. */
-            flex-wrap: wrap; /* Zorgt ervoor dat flex-items naar de volgende regel gaan als er te weinig ruimte is (belangrijk voor responsiviteit). */
-            justify-content: center; /* Centreert de items wanneer ze naar de volgende regel gaan op kleinere schermen. */
-            text-align: left; /* Standaard links uitlijnen voor desktop. Wordt overschreven in media query voor mobiel. */
-        }
-
-        .intro img {
-            width: 300px; /* Stelt een vaste breedte van 300 pixels in voor de afbeelding. */
-            max-width: 100%; /* Zorgt ervoor dat de afbeelding nooit breder wordt dan zijn ouder. */
-            height: auto; /* Behoudt de aspect ratio van de afbeelding. */
-            border-radius: 8px; /* Afgeronde hoeken voor de afbeelding. */
-            object-fit: cover; /* Zorgt ervoor dat de afbeelding de container vult, en bijsnijdt indien nodig, om de beeldverhouding te behouden. */
-            flex-shrink: 0; /* Voorkomt dat de afbeelding krimpt wanneer er te weinig ruimte is. */
-        }
-
-        .intro-content {
-            flex: 1; /* De tekstinhoud mag de resterende ruimte innemen. */
-            min-width: 280px; /* Zorgt ervoor dat het tekstblok niet te smal wordt op kleinere schermen voordat het omklapt. */
-        }
-
-        .intro-content h1 {
-            margin-top: 0; /* Verwijdert de standaard bovenmarge van de '<h1>'. */
-            font-size: 2em; /* Stelt de lettergrootte in op 2 keer de standaard. */
-        }
-
-        .intro-content p {
-            line-height: 1.6; /* Stelt de regelhoogte in op 1.6 keer de lettergrootte, wat de leesbaarheid verbetert. */
-        }
-
-        footer {
-            background: rgba(0, 0, 0, 0.8); /* Semi-transparante zwarte achtergrond. */
-            color: #ccc; /* Lichtgrijze tekstkleur. */
-            text-align: center; /* Centreert de tekst. */
-            padding: 20px; /* Opvulling. */
-            font-size: 0.9em; /* Iets kleinere lettergrootte. */
-            margin-top: auto; /* Dit is cruciaal voor de sticky footer. Omdat de 'body' een flex-container is met 'flex-direction: column', duwt 'margin-top: auto' de footer naar de onderkant van de pagina, ongeacht de inhoud van de 'main'. */
-        }
-
-        footer a {
-            color: #ccc; /* Lichtgrijze tekstkleur. */
-            text-decoration: none; /* Verwijdert de onderstreping. */
-            margin: 0 10px; /* 10 pixels marge links en rechts. */
-            font-weight: bold; /* Maakt de tekst vetgedrukt. */
-            transition: color 0.3s; /* Zorgt voor een vloeiende overgang van de tekstkleur wanneer erover gehoverd wordt. */
-        }
-
-        footer a:hover {
-            color: #2f80ed; /* Verandert de tekstkleur naar een specifieke blauwtint wanneer erover gehoverd wordt. */
-        }
-
-        /* --- Media Queries voor Responsiviteit --- */
-
-        @media (max-width: 768px) { /* Dit is een media query. Het betekent dat de CSS-regels binnen dit blok alleen worden toegepast wanneer de breedte van de viewport maximaal 768 pixels is (typisch voor tablets in portretmodus en grotere telefoons). */
-            header nav {
-                flex-direction: column; /* De navigatielinks worden verticaal gestapeld. */
-                gap: 15px; /* De ruimte tussen de links wordt kleiner. */
-            }
-
-            .intro {
-                flex-direction: column; /* De afbeelding en tekst in de intro-sectie worden verticaal gestapeld. */
-                text-align: center; /* De tekst in de intro-sectie wordt gecentreerd. */
-                padding: 20px; /* Minder padding op kleinere schermen. */
-                margin: 20px auto; /* Minder marge boven en onder. */
-            }
-
-            .intro img {
-                width: 80%; /* De afbeelding neemt 80% van de breedte van zijn ouder in beslag. */
-            }
-
-            .intro-content {
-                text-align: center; /* Zorgt ervoor dat de tekstinhoud in de intro-sectie ook gecentreerd is. */
-            }
-
-            .intro-content h1 {
-                font-size: 1.8em; /* Een iets kleinere lettergrootte voor de titel. */
-            }
-
-            .intro-content p {
-                font-size: 0.95em; /* Een iets kleinere lettergrootte voor de paragrafen. */
-            }
-        }
-
-        @media (max-width: 480px) { /* Nog een media query, voor schermen maximaal 480 pixels breed (typisch voor smartphones). */
-            header nav {
-                gap: 10px; /* Nog kleinere ruimte tussen navigatielinks. */
-            }
-
-            header nav a {
-                font-size: 1em; /* Standaard lettergrootte voor navigatielinks. */
-            }
-
-            .intro {
-                padding: 15px; /* Nog minder padding voor de intro-sectie. */
-                margin: 15px auto; /* Nog minder marge boven en onder. */
-            }
-
-            .intro img {
-                width: 90%; /* De afbeelding neemt 90% van de breedte van zijn ouder in beslag op zeer kleine schermen. */
-            }
-
-            .intro-content h1 {
-                font-size: 1.5em; /* Verdere verlaging van de titel lettergrootte. */
-            }
-
-            .intro-content p {
-                font-size: 0.9em; /* Verdere verlaging van de paragraaf lettergrootte. */
-            }
-        }
     </style>
 </head>
 <body>

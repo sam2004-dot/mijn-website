@@ -1,0 +1,249 @@
+/*projecten*/
+ 
+ html, body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: url('assets/images/background.jpg') no-repeat center center fixed;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+/* 
+    Stijlt de headersectie met een witte achtergrond, verticale padding
+    en een subtiele schaduw voor visuele scheiding van de rest van de pagina.
+*/
+header {
+    background: white;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+/* 
+    Dit gedeelte centreert de navigatie-items horizontaal in de header
+*/
+header nav {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+/* 
+    Stijlt de navigatielinks met een zwarte kleur, zonder onderstreping,
+    en maakt ze vetgedrukt en iets groter voor betere zichtbaarheid.
+*/
+header nav a {
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+/* 
+    Verandert de kleur van de navigatielinks bij hover om een visuele feedback te geven.
+*/
+header nav a:hover {
+    color: #2f80ed;
+    text-decoration: underline;
+}
+/* 
+    Stijlt de hoofdtitel in de header met een zwarte kleur en verwijdert de standaard marge.
+*/
+header h1 {
+    color: #000;
+    margin-top: 10px;
+}
+/* 
+    Stijlt de hoofdtitel in de header met een zwarte kleur en verwijdert de standaard marge.
+*/
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+}
+/* 
+    Stijlt de container die de projecten bevat, met een maximale breedte,
+    achtergrondkleur, padding en afgeronde hoeken voor een moderne uitstraling.
+*/
+.container {
+    max-width: 1200px;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 40px;
+    border-radius: 15px;
+}
+/* 
+    Stijlt de titel van de projectensectie met een grotere lettergrootte,
+    vetgedrukt en een lichte marge aan de onderkant.
+*/
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+/* 
+    Stijlt de individuele projectkaarten met een lichte achtergrondkleur,
+    afgeronde hoeken, padding en een subtiele schaduw voor diepte.
+*/
+.project-card {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    color: black;
+}
+/* 
+    Verandert de schaduw en voegt een lichte transformatie toe bij hover.
+*/
+.project-card:hover {
+    transform: translateY(-5px);
+}
+/* 
+    Stijlt de afbeeldingen binnen de projectkaarten met een maximale breedte,
+    afgeronde hoeken en een vaste hoogte.
+*/
+.project-card img {
+    width: 100%;
+    border-radius: 8px;
+    max-height: 200px;
+    object-fit: cover;
+}
+/* 
+    Stijlt de titels binnen de projectkaarten met een grotere lettergrootte,
+    een lichte marge aan de bovenkant en een subtiele kleur.
+*/
+.project-card h3 {
+    margin-top: 10px;
+    font-size: 1.1em;
+}
+/* 
+    Stijlt de beschrijvingen binnen de projectkaarten met een kleinere lettergrootte
+    en een lichte kleur voor betere leesbaarheid.
+*/
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 20px;
+}
+/* 
+    Stijlt de popup-inhoud met een witte achtergrond, padding, afgeronde hoeken,
+    maximale breedte en hoogte, en flexbox voor een responsieve lay-out.
+*/
+.popup-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 900px;
+    width: 100%;
+    max-height: 90%;
+    overflow: auto;
+    position: relative;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+/* 
+    Stijlt de afbeeldingen binnen de popup-inhoud met een maximale breedte en hoogte,
+    afgeronde hoeken, en zorgt ervoor dat ze goed passen binnen de popup.
+*/
+.popup-content img {
+    max-width: 100%;
+    max-height: 70vh;
+    height: auto;
+    border-radius: 8px;
+    object-fit: contain;
+    flex: 1 1 300px;
+}
+/* 
+    Stijlt de tekstblokken binnen de popup-inhoud met een flexibele breedte,
+    tekstuitlijning, kleur en lettergrootte voor leesbaarheid.
+*/
+.popup-text-block {
+    flex: 1 1 300px;
+    text-align: left;
+    color: #333;
+    font-size: 1em;
+}
+/* 
+    Stijlt de titels binnen de tekstblokken met een grotere lettergrootte,
+    een lichte marge aan de bovenkant en een opvallende kleur.
+*/
+.popup-text-block h2 {
+    margin-top: 0;
+}
+/* 
+    Stijlt de paragrafen binnen de tekstblokken met een lichte marge aan de bovenkant
+    en een verhoogde regelhoogte voor betere leesbaarheid.
+*/
+.popup-text-block p {
+    margin-top: 10px;
+    line-height: 1.6;
+}
+/* 
+    Stijlt de sluitknop binnen de popup met een absolute positie, grootte,
+    en een cursor die aangeeft dat het klikbaar is.
+*/
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+}
+/* 
+    Stijlt de footer met een donkere achtergrond, lichte tekstkleur,
+    centrering van de tekst, padding en een kleinere lettergrootte.
+*/	
+footer {
+    background: rgba(0, 0, 0, 0.8);
+    color: #ccc;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9em;
+    margin-top: auto;
+}
+/* 
+    Stijlt de links in de footer met een lichte kleur, zonder onderstreping,
+    en voegt een hover effect toe voor visuele effecten.
+*/
+footer a {
+    color: #ccc;
+    margin: 0 10px;
+    text-decoration: none;
+}
+/* 
+    Verandert de kleur van de links in de footer bij hover
+    en voegt een onderstreping toe voor visuele feedback.
+*/
+footer a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+    .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+    .popup-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .popup-text-block {
+        text-align: center;
+    }
+}

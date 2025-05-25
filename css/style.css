@@ -1,95 +1,170 @@
+/*dit is de achtergrond van mijn pagina*/
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: url('./assets/images/background.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+}
 
-/* Navigatiebalk */
-.navbar {
-  background-color: #007BFF; /* Blauwe achtergrond */
-  overflow: hidden;
-  padding: 10px 0;
+header {
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+/* Deze sectie stijlt de header met een witte achtergrond, verticale padding
+  en een subtiele schaduw voor visuele scheiding van de rest van de pagina. */
+header nav {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
-  width: 100%; /* Zorgt dat het over de hele breedte gaat */
-  box-sizing: border-box;
-  position: relative;
+  gap: 40px;
 }
-.navbar a {
-  color: white; /* Witte tekstkleur */
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none; /* Geen onderstreping */
-  font-size: 17px; /* Grotere tekst */
-  flex-grow: 1; /* Zorgt dat de links gelijkmatig verdeeld zijn */
+/* Dit gedeelte centreert de navigatie-items horizontaal in de header */
+header nav a {
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1em;
+  transition: color 0.3s;
 }
-.navbar a:hover {
-  background-color: #0056b3; /* Donkerder blauw bij hover */
-  color: white; /* Witte tekstkleur bij hover */
+/* Stijlt de navigatielinks met een zwarte kleur, zonder onderstreping,
+  en maakt ze vetgedrukt en iets groter voor betere zichtbaarheid. */
+header nav a:hover {
+  color: #2f80ed;
 }
-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  margin: 0;
-}
-
-.content {
+/* Verandert de kleur van de navigatielinks bij hover om een visuele feedback te geven. */
+main {
   flex: 1;
-}
-
-.footer {
-  background-color: rgb(240, 240, 240);
-  padding: 20px;
-  text-align: center;
-}
-.footer-links a {
-  margin-right: 15px;
-  text-decoration: none;
-  color: black;
-}
-.footer-links a:last-child {
-  margin-right: 0;
-}
-body {
   display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  margin: 0;
-}
-
-.content {
-  flex: 1; /* Zorgt ervoor dat de inhoud de resterende ruimte inneemt */
-}
-
-.footer {
-  background-color: rgb(240, 240, 240);
+  justify-content: center;
+  align-items: center;
   padding: 20px;
+  box-sizing: border-box;
+}
+/* Stijlt de hoofdtitel in de header met een zwarte kleur en verwijdert de standaard marge. */
+.intro {
+  background-color: rgba(0, 0, 0, 0.6);
+  margin: 40px auto;
+  padding: 40px;
+  max-width: 1000px;
+  border-radius: 12px;
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: left;
+}
+/* Stijlt de container die de introductie-informatie bevat,
+  met een maximale breedte en een flexibele lay-out voor responsiviteit. */
+.intro img {
+  width: 300px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+/* Stijlt de afbeelding in de introductie met een vaste breedte,
+  maximale breedte van 100% en een afgeronde hoek voor een moderne uitstraling. */
+.intro-content {
+  flex: 1;
+  min-width: 280px;
+}
+/* Stijlt de tekstinhoud in de introductie met flexibele breedte,
+  zodat het zich aanpast aan de beschikbare ruimte. */
+.intro-content h1 {
+  margin-top: 0;
+  font-size: 2em;
+}
+/* Stijlt de hoofdtitel in de introductie met een grotere lettergrootte
+  en verwijdert de standaard marge voor betere zichtbaarheid. */
+.intro-content p {
+  line-height: 1.6;
+}
+/* Stijlt de paragrafen in de introductie met een regelhoogte voor betere leesbaarheid. */
+footer {
+  background: rgba(0, 0, 0, 0.8);
+  color: #ccc;
   text-align: center;
-  margin-top: auto; /* Zorgt ervoor dat de footer naar de onderkant van de pagina wordt geduwd */
+  padding: 20px;
+  font-size: 0.9em;
+  margin-top: auto;
 }
-.footer-links a {
-  margin-right: 15px;
+/* Stijlt de footer met een donkere achtergrond, lichte tekstkleur,
+  gecentreerde tekst en een kleinere lettergrootte voor een subtiele uitstraling. */
+footer a {
+  color: #ccc;
   text-decoration: none;
-  color: black;
+  margin: 0 10px;
+  font-weight: bold;
+  transition: color 0.3s;
 }
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
+/* Stijlt de links in de footer met een lichte kleur, zonder onderstreping,
+  en maakt ze vetgedrukt voor betere zichtbaarheid. */
+footer a:hover {
+  color: #2f80ed;
+}
+
+@media (max-width: 768px) {
+  header nav {
+    flex-direction: column;
+    gap: 15px;
   }
 
-  .navbar {
-    background-color: #333;
-    overflow: hidden;
-  }
-
-  .navbar a {
-    float: left;
-    display: block;
-    color: white;
+  .intro {
+    flex-direction: column;
     text-align: center;
-    padding: 14px 20px;
-    text-decoration: none;
+    padding: 20px;
+    margin: 20px auto;
   }
 
-  .navbar a:hover {
-    background-color: #ddd;
-    color: black;
+  .intro img {
+    width: 80%;
   }
 
+  .intro-content {
+    text-align: center;
+  }
+
+  .intro-content h1 {
+    font-size: 1.8em;
+  }
+
+  .intro-content p {
+    font-size: 0.95em;
+  }
+}
+
+@media (max-width: 480px) {
+  header nav {
+    gap: 10px;
+  }
+
+  header nav a {
+    font-size: 1em;
+  }
+
+  .intro {
+    padding: 15px;
+    margin: 15px auto;
+  }
+
+  .intro img {
+    width: 90%;
+  }
+
+  .intro-content h1 {
+    font-size: 1.5em;
+  }
+
+  .intro-content p {
+    font-size: 0.9em;
+  }
+}

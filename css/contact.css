@@ -1,0 +1,296 @@
+    html, body {
+        height: 100%;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        font-family: Arial, sans-serif;
+        background: url('./assets/images/background.jpg') no-repeat center center fixed;
+        background-size: cover;
+        color: white;
+
+    
+    }
+        /* 
+            Stijlt de headersectie met een witte achtergrond, verticale padding
+            en een subtiele schaduw voor visuele scheiding van de rest van de pagina.
+        */
+    header {
+        background: white;
+        padding: 20px 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+/* 
+   Dit gedeelte centreert de navigatie-items horizontaal in de header
+*/
+    header nav {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+    }
+    /* 
+        Stijlt de navigatielinks met een zwarte kleur, zonder onderstreping,
+        en maakt ze vetgedrukt en iets groter voor betere zichtbaarheid.
+    */
+    header nav a {
+        color: #000;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.1em;
+        transition: color 0.3s;
+    }
+    /* 
+        Verandert de kleur van de navigatielinks bij hover om een visuele feedback te geven.
+    */
+    header nav a:hover {
+        color: #2f80ed;
+    }
+    /* 
+        Stijlt de hoofdtitel in de header met een zwarte kleur en verwijdert de standaard marge.
+    */
+    main {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 40px 20px;
+        box-sizing: border-box;
+    }
+    /* 
+        Stijlt de container die de contactformulier en informatie bevat,
+        met een maximale breedte
+    */
+    .container {
+        max-width: 700px;
+        width: 100%;
+        margin: 0 auto;
+        background-color: rgba(0, 0, 0, 0.6);
+        color: white;
+        padding: 40px;
+        border-radius: 15px;
+    }
+ 
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    /* 
+        Stijlt de formulierelementen zoals invoervelden en knoppen
+    */
+    .form-group {
+        margin-bottom: 15px;
+    }
+    /* 
+        Stijlt de labels van de formulierelementen
+    */
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+    /* 
+        Stijlt de invoervelden en textarea's met een breedte van 100%,
+        padding, een lichte rand en afgeronde hoeken voor een moderne uitstraling.
+    */
+    input[type="text"],
+    input[type="email"],
+    textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+        background-color: rgba(255, 255, 255, 0.9);
+        color: #333;
+    }
+    /* 
+        Verhoogt de zichtbaarheid van de invoervelden en textarea's bij focus
+    */
+    textarea {
+        resize: vertical;
+        min-height: 100px;
+    }
+    /* 
+        Stijlt de verzendknop van het formulier met een blauwe achtergrond,
+        witte tekst, padding en afgeronde hoeken.
+    */
+    button[type="submit"] {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1em;
+        display: block;
+        margin: 20px auto 0;
+    }
+    /* 
+        Verandert de achtergrondkleur van de verzendknop bij hover voor een visuele feedback.
+    */
+    button[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+    /* 
+        Stijlt de contactinformatie sectie met een lichte achtergrond.
+    */
+    .contact-info {
+        margin-top: 30px;
+        padding: 15px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 4px;
+        background-color: rgba(0, 0, 0, 0.4);
+        color: white;
+    }
+    /* 
+        Stijlt de koppen en links in de contactinformatie sectie.
+    */
+    .contact-info h2 {
+        margin-top: 0;
+        margin-bottom: 10px;
+        color: #2f80ed;
+    }
+    /* 
+        Stijlt de paragraaf en links in de contactinformatie sectie.
+    */
+    .contact-info a {
+        color: #87ceeb;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+    /* 
+        Verandert de kleur van de links in de contactinformatie sectie bij hover
+        en voegt een onderstreping toe voor visuele feedback.
+    */
+    .contact-info a:hover {
+        color: #2f80ed;
+        text-decoration: underline;
+    }
+    /* 
+        Stijlt de kaart sectie met een vaste hoogte, breedte en afgeronde hoeken.
+    */
+    #map {
+        height: 300px;
+        width: 100%;
+        border-radius: 4px;
+        margin-top: 30px;
+    }
+    /* 
+        Stijlt de footer met een donkere achtergrond, lichte tekst en centrering.
+        Voegt ook een hover effect toe voor de links in de footer.
+    */
+    footer {
+        background: rgba(0, 0, 0, 0.8);
+        color: #ccc;
+        text-align: center;
+        padding: 20px;
+        font-size: 0.9em;
+        margin-top: auto;
+    }
+    /* 
+        Stijlt de links in de footer met een lichte kleur, zonder onderstreping,
+        en voegt een hover effect toe voor visuele effecten.
+    */
+    footer a {
+        color: #ccc;
+        margin: 0 10px;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+    /* 
+        Verandert de kleur van de links in de footer bij hover
+        en voegt een onderstreping toe voor visuele feedback.
+    */
+    footer a:hover {
+        text-decoration: underline;
+        color: #2f80ed;
+    }
+    /* 
+        Media queries voor responsieve stijlen, zodat de layout zich aanpast
+        aan verschillende schermgroottes.
+    */
+    @media (max-width: 768px) {
+        header nav {
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+    /* 
+            Verkleint de lettergrootte van de navigatielinks en de hoofdtitel
+            voor kleinere schermen.
+        */
+        header nav a {
+            font-size: 1em;
+        }
+    /* 
+            Verkleint de hoofdtitel voor kleinere schermen.
+        */
+        main {
+            padding: 20px 15px;
+        }
+    /* 
+            Verkleint de padding van de container voor kleinere schermen.
+        */
+        .container {
+            padding: 25px;
+        }
+    /* 
+            Verkleint de hoofdtitel voor kleinere schermen.
+        */
+        h1 {
+            font-size: 1.8em;
+        }
+     /* 
+            Verkleint de lettergrootte van de contactinformatie sectie
+            voor kleinere schermen.
+        */
+        .contact-info p, .contact-info a {
+            font-size: 0.95em;
+        }
+        /* 
+            Verkleint de hoogte van de kaart voor kleinere schermen.
+        */
+        #map {
+            height: 250px;
+        }
+    }
+    /* 
+        Media query voor extra kleine schermen, zoals smartphones,
+        om de layout verder te optimaliseren.
+    */
+    @media (max-width: 480px) {
+        header nav {
+            gap: 10px;
+        }
+        /* 
+            Verkleint de lettergrootte van de navigatielinks voor extra kleine schermen.
+        */
+        header nav a {
+            font-size: 0.9em;
+        }
+
+        main {
+            padding: 15px 10px;
+        }
+
+        .container {
+            padding: 15px;
+        }
+
+        h1 {
+            font-size: 1.5em;
+        }
+
+        .contact-info p, .contact-info a {
+            font-size: 0.9em;
+        }
+
+        #map {
+            height: 200px;
+            margin-top: 20px;
+        }
+
+        button[type="submit"] {
+            padding: 10px 10px;
+            font-size: 0.9em;
+        }
+    }

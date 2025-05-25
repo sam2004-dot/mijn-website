@@ -6,236 +6,19 @@
     <title>Contacteer mij</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="css/contact.css" />
     <style>
-        /* Dit tag opent een intern CSS-stijlblok. Alle CSS-regels binnen dit blok definiëren de opmaak van de HTML-elementen op deze pagina. */
-        html, body {
-            height: 100%; /* Zorgt ervoor dat zowel 'html' als 'body' de volledige hoogte van de viewport innemen. Essentieel voor de 'sticky footer'. */
-            margin: 0; /* Verwijdert de standaard buitenmarge die browsers toevoegen. */
-            display: flex; /* Maakt de '<body>' een flex-container. Dit is een krachtige lay-out methode in CSS. */
-            flex-direction: column; /* Zorgt ervoor dat flex-items (header, main, footer) verticaal onder elkaar worden geplaatst. */
-            font-family: Arial, sans-serif; /* Stelt het standaard lettertype in op Arial, en als dat niet beschikbaar is, een generiek schreefloos lettertype. */
-            background: url('./assets/images/background.jpg') no-repeat center center fixed; /* Stelt een achtergrondafbeelding in ('background.jpg').
-                                                                                                  'no-repeat': De afbeelding wordt niet herhaald.
-                                                                                                  'center center': De afbeelding wordt gecentreerd.
-                                                                                                  'fixed': De achtergrondafbeelding blijft op zijn plaats wanneer de gebruiker scrollt. */
-            background-size: cover; /* Zorgt ervoor dat de achtergrondafbeelding de hele beschikbare ruimte bedekt, zonder vervorming, en snijdt eventueel delen af. */
-            color: white; /* Stelt de standaard tekstkleur in op wit voor de hele pagina. */
-        }
+    html, body {
+        height: 100%;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        font-family: Arial, sans-serif;
+        background: url('./assets/images/background.jpg') no-repeat center center fixed;
+        background-size: cover;
+        color: white;
+    }
 
-        header {
-            background: white; /* Witte achtergrondkleur voor de header. */
-            padding: 20px 0; /* 20 pixels opvulling (padding) boven en onder, 0 pixels links en rechts. */
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Voegt een subtiele schaduw toe aan de header voor een diepte-effect. */
-        }
-
-        header nav {
-            display: flex; /* Maakt de navigatie een flex-container, waardoor de links flexibel kunnen worden geplaatst. */
-            justify-content: center; /* Centreert de navigatielinks horizontaal. */
-            gap: 40px; /* Creëert een ruimte van 40 pixels tussen de navigatielinks. */
-        }
-
-        header nav a {
-            color: #000; /* Zwarte tekstkleur. */
-            text-decoration: none; /* Verwijdert de standaard onderstreping van links. */
-            font-weight: bold; /* Maakt de tekst vetgedrukt. */
-            font-size: 1.1em; /* Stelt de lettergrootte in op 1.1 keer de standaard lettergrootte van het oudere element. */
-            transition: color 0.3s; /* Zorgt voor een vloeiende overgang van de tekstkleur wanneer erover gehoverd wordt. */
-        }
-
-        header nav a:hover {
-            color: #2f80ed; /* Verandert de tekstkleur naar een specifieke blauwtint wanneer erover gehoverd wordt. */
-        }
-
-        main {
-            flex: 1; /* Dit is een flex shorthand eigenschap. Het zorgt ervoor dat het 'main'-element de beschikbare verticale ruimte inneemt tussen de header en de footer. Als er extra ruimte is, zal dit element 'groeien'. */
-            display: flex; /* Maakt de 'main' een flex-container om de inhoud te centreren. */
-            justify-content: center; /* Centreert de inhoud (de '.container') horizontaal. */
-            align-items: center; /* Centreert de inhoud (de '.container') verticaal. */
-            padding: 40px 20px; /* 40 pixels opvulling boven en onder, 20 pixels links en rechts. */
-            box-sizing: border-box; /* Zorgt ervoor dat padding wordt meegerekend in de totale breedte van het element. */
-        }
-
-        .container {
-            max-width: 700px; /* Maximale breedte van 700 pixels. */
-            width: 100%; /* Zorgt ervoor dat de container de beschikbare breedte benut tot de max-width. */
-            margin: 0 auto; /* Horizontaal centreren. */
-            background-color: rgba(0, 0, 0, 0.6); /* Semi-transparante zwarte achtergrondkleur (0.6 is de alpha-waarde, oftewel 60% dekking). */
-            color: white; /* Witte tekstkleur voor de containerinhoud. */
-            padding: 40px; /* 40 pixels opvulling aan alle zijden. */
-            border-radius: 15px; /* Rondt de hoeken van de container af met een radius van 15 pixels. */
-        }
-
-        h1 {
-            text-align: center; /* Centreert de H1 titel. */
-            margin-bottom: 20px; /* Voegt een marge onder de H1 toe. */
-        }
-
-        .form-group {
-            margin-bottom: 15px; /* Ruimte onder elk formuliergroep (label + input/textarea). */
-        }
-
-        label {
-            display: block; /* Maakt labels blok-elementen, zodat ze op een nieuwe regel beginnen. */
-            margin-bottom: 5px; /* Ruimte onder het label. */
-            font-weight: bold; /* Maakt de tekst van de labels vetgedrukt. */
-        }
-
-        input[type="text"],
-        input[type="email"],
-        textarea {
-            width: 100%; /* Zorgt ervoor dat de input- en textarea-velden de volledige breedte van hun ouder innemen. */
-            padding: 10px; /* Opvulling binnen de input- en textarea-velden. */
-            border: 1px solid #ddd; /* Dunne grijze rand. */
-            border-radius: 4px; /* Licht afgeronde hoeken. */
-            box-sizing: border-box; /* Zorgt ervoor dat padding en border worden meegerekend in de totale breedte/hoogte van het element, voorkomt overflow. */
-            background-color: rgba(255, 255, 255, 0.9); /* Licht doorschijnende witte achtergrond voor input velden. */
-            color: #333; /* Donkergrijze tekstkleur voor input velden. */
-        }
-
-        textarea {
-            resize: vertical; /* Staat alleen verticale resizing toe door de gebruiker. */
-            min-height: 100px; /* Minimale hoogte van de textarea. */
-        }
-
-        button[type="submit"] {
-            background-color: #007bff; /* Blauwe achtergrondkleur voor de submit-knop. */
-            color: white; /* Witte tekstkleur voor de knop. */
-            padding: 10px 15px; /* Opvulling binnen de knop. */
-            border: none; /* Geen rand. */
-            border-radius: 4px; /* Afgeronde hoeken. */
-            cursor: pointer; /* Verandert de muisaanwijzer in een handje. */
-            font-size: 1em; /* Lettergrootte. */
-            display: block; /* Zorgt ervoor dat de knop een eigen regel inneemt. */
-            margin: 20px auto 0; /* Centraal plaatsen van de knop onder het formulier. */
-        }
-
-        button[type="submit"]:hover {
-            background-color: #0056b3; /* Donkerdere blauwtint bij hover. */
-        }
-
-        .contact-info {
-            margin-top: 30px; /* Marge boven de contactinformatie. */
-            padding: 15px; /* Opvulling. */
-            border: 1px solid rgba(255, 255, 255, 0.3); /* Lichte transparante rand. */
-            border-radius: 4px; /* Afgeronde hoeken. */
-            background-color: rgba(0, 0, 0, 0.4); /* Transparante zwarte achtergrond. */
-            color: white; /* Witte tekstkleur voor de contactinformatie. Aangepast voor leesbaarheid. */
-        }
-
-        .contact-info h2 {
-            margin-top: 0; /* Verwijdert de standaard bovenmarge. */
-            margin-bottom: 10px; /* Marge onder de H2. */
-            color: #2f80ed; /* Blauwe kleur voor de titel van contactinfo. */
-        }
-
-        .contact-info a {
-            color: #87ceeb; /* Lichtere blauwe kleur voor links in contactinfo. */
-            text-decoration: none; /* Geen onderstreping. */
-            transition: color 0.3s; /* Vloeiende overgang voor hover-effect. */
-        }
-
-        .contact-info a:hover {
-            color: #2f80ed; /* Verandert de linkkleur bij hover. */
-            text-decoration: underline; /* Onderstreping bij hover. */
-        }
-
-        #map {
-            height: 300px; /* Vaste hoogte voor de kaart op desktop. */
-            width: 100%; /* De kaart neemt de volledige breedte in. */
-            border-radius: 4px; /* Afgeronde hoeken. */
-            margin-top: 30px; /* Marge boven de kaart. */
-        }
-
-        footer {
-            background: rgba(0, 0, 0, 0.8); /* Semi-transparante zwarte achtergrond. */
-            color: #ccc; /* Lichtgrijze tekstkleur. */
-            text-align: center; /* Centreert de tekst. */
-            padding: 20px; /* Opvulling. */
-            font-size: 0.9em; /* Iets kleinere lettergrootte. */
-            margin-top: auto; /* Dit is cruciaal voor de sticky footer. Omdat de 'body' een flex-container is met 'flex-direction: column', duwt 'margin-top: auto' de footer naar de onderkant van de pagina, ongeacht de inhoud van de 'main'. */
-        }
-
-        footer a {
-            color: #ccc; /* Lichtgrijze tekstkleur. */
-            margin: 0 10px; /* 10 pixels marge links en rechts. */
-            text-decoration: none; /* Verwijdert de onderstreping. */
-            transition: color 0.3s; /* Vloeiende overgang voor hover-effect. */
-        }
-
-        footer a:hover {
-            text-decoration: underline; /* Voegt een onderstreping toe wanneer de muisaanwijzer over een footerlink beweegt. */
-            color: #2f80ed; /* Verandert de linkkleur bij hover. */
-        }
-
-        /* --- Media Queries voor Responsiviteit --- */
-
-        @media (max-width: 768px) { /* Dit is een media query. De CSS-regels binnen dit blok worden toegepast wanneer de breedte van de viewport maximaal 768 pixels is (typisch voor tablets in portretmodus en grotere telefoons). */
-            header nav {
-                flex-direction: column; /* De navigatielinks worden verticaal gestapeld. */
-                gap: 15px; /* De ruimte tussen de links wordt kleiner. */
-                margin-bottom: 15px; /* Meer marge onder de navigatie op mobiel. */
-            }
-
-            header nav a {
-                font-size: 1em; /* Pas de lettergrootte van de navigatielinks aan voor betere leesbaarheid op mobiel. */
-            }
-
-            main {
-                padding: 20px 15px; /* Minder padding voor de main sectie op kleinere schermen. */
-            }
-
-            .container {
-                padding: 25px; /* Minder padding voor de container op kleinere schermen. */
-            }
-
-            h1 {
-                font-size: 1.8em; /* Een iets kleinere lettergrootte voor de H1 titel op mobiel. */
-            }
-
-            .contact-info p, .contact-info a {
-                font-size: 0.95em; /* Iets kleinere lettergrootte voor contactinfo tekst. */
-            }
-
-            #map {
-                height: 250px; /* Iets lagere kaart op tablets/telefoons. */
-            }
-        }
-
-        @media (max-width: 480px) { /* Nog een media query, voor schermen maximaal 480 pixels breed (typisch voor smartphones). */
-            header nav {
-                gap: 10px; /* Nog kleinere ruimte tussen navigatielinks. */
-            }
-
-            header nav a {
-                font-size: 0.9em; /* Kleinere lettergrootte voor navigatielinks. */
-            }
-
-            main {
-                padding: 15px 10px; /* Nog minder padding voor de main sectie. */
-            }
-
-            .container {
-                padding: 15px; /* Nog minder padding voor de container op zeer kleine schermen. */
-            }
-
-            h1 {
-                font-size: 1.5em; /* Verdere verlaging van de H1 titel lettergrootte. */
-            }
-
-            .contact-info p, .contact-info a {
-                font-size: 0.9em; /* Verdere verlaging van de contactinfo tekst. */
-            }
-
-            #map {
-                height: 200px; /* Nog lagere kaart op smartphones voor betere benutting van schermruimte. */
-                margin-top: 20px; /* Minder marge boven de kaart. */
-            }
-
-            button[type="submit"] {
-                padding: 10px 10px; /* Kleinere padding voor de knop op kleine schermen. */
-                font-size: 0.9em; /* Kleinere lettergrootte voor de knop. */
-            }
-        }
     </style>
 </head>
 
@@ -283,22 +66,16 @@
 
     <script>
         // Dit JavaScript-blok initialiseert de Leaflet kaart.
-        // Eerst wordt een kaartobject gemaakt en gekoppeld aan het div-element met id 'map'.
-        // setView([latitude, longitude], zoom_level) stelt de initiële geografische coördinaten en het zoomniveau in.
-        // De coördinaten (51.229723, 4.41583) wijzen naar de Campus Ellermanstraat van AP Hogeschool in Antwerpen. Zoomlevel 16 is vrij ingezoomd.
         const map = L.map('map').setView([51.229723, 4.41583], 16);
 
         // Voegt een tegel-laag toe aan de kaart. Dit zijn de "achtergrondafbeeldingen" van de kaart, meestal van OpenStreetMap.
-        // 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png' is de URL-sjabloon voor de OpenStreetMap tegels.
-        // '{s}' staat voor subdomein (a, b, c), '{z}' voor zoomniveau, '{x}' en '{y}' voor de coördinaten van de tegel.
-        // 'attribution' is belangrijk en verplicht om de bron van de kaartdata te vermelden.
+
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; OpenStreetMap-bijdragers'
         }).addTo(map); // Voegt de tegellaag toe aan de kaart.
 
         // Voegt een marker (pin) toe aan de kaart op de opgegeven coördinaten.
-        // bindPopup() koppelt een pop-up venster aan de marker, dat verschijnt wanneer erop geklikt wordt.
-        // openPopup() zorgt ervoor dat de pop-up direct geopend is bij het laden van de kaart.
+
         L.marker([51.229723, 4.41583]).addTo(map)
             .bindPopup('AP Hogeschool – Campus Ellermanstraat<br>Ellermanstraat 1, 2060 Antwerpen')
             .openPopup();

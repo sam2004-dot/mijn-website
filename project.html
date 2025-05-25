@@ -4,198 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Mijn Projecten</title>
-    <style>
-        /* Dit tag opent een intern CSS-stijlblok. Alle CSS-regels binnen dit blok definiëren de opmaak van de HTML-elementen op deze pagina. */
+    <head>
+  <link rel="stylesheet" href="css/project.css">
+  <style>
         html, body {
-            margin: 0; /* Verwijdert de standaard buitenmarge die browsers toevoegen. */
-            font-family: Arial, sans-serif; /* Stelt het standaard lettertype in op Arial, en als dat niet beschikbaar is, een generiek schreefloos lettertype. */
-            background: url('assets/images/background.jpg') no-repeat center center fixed; /* Stelt een achtergrondafbeelding in ('background.jpg').
-                                                                                                  'no-repeat': De afbeelding wordt niet herhaald.
-                                                                                                  'center center': De afbeelding wordt gecentreerd.
-                                                                                                  'fixed': De achtergrondafbeelding blijft op zijn plaats wanneer de gebruiker scrollt. */
-            background-size: cover; /* Zorgt ervoor dat de achtergrondafbeelding de hele beschikbare ruimte bedekt, zonder vervorming, en snijdt eventueel delen af. */
-            color: white; /* Stelt de standaard tekstkleur in op wit voor de hele pagina. */
-            display: flex; /* Maakt de '<body>' een flex-container. Dit is een krachtige lay-out methode in CSS. */
-            flex-direction: column; /* Zorgt ervoor dat flex-items (header, main, footer) verticaal onder elkaar worden geplaatst. */
-            min-height: 100vh; /* Garandeert dat de body minimaal de volledige hoogte van de viewport (100% van de "viewport height") inneemt. Dit is belangrijk voor de sticky footer. */
-        }
+        height: 100%;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        font-family: Arial, sans-serif;
+        background: url('./assets/images/background.jpg') no-repeat center center fixed;
+        background-size: cover;
+        color: white;
+    }
 
-        header {
-            background: white; /* Witte achtergrondkleur. */
-            padding: 20px 0; /* 20 pixels opvulling (padding) boven en onder, 0 pixels links en rechts. */
-            text-align: center; /* Centreert de tekst binnen de header. */
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Voegt een subtiele schaduw toe aan de header voor een diepte-effect. */
-        }
+  </style>
+</head>
 
-        header nav {
-            display: flex; /* Maakt de navigatie een flex-container, waardoor de links flexibel kunnen worden geplaatst. */
-            justify-content: center; /* Centreert de navigatielinks horizontaal. */
-            gap: 30px; /* Creëert een ruimte van 30 pixels tussen de navigatielinks. */
-        }
-
-        header nav a {
-            color: #000; /* Zwarte tekstkleur. */
-            text-decoration: none; /* Verwijdert de standaard onderstreping van links. */
-            font-weight: bold; /* Maakt de tekst vetgedrukt. */
-            font-size: 1.1em; /* Stelt de lettergrootte in op 1.1 keer de standaard lettergrootte van het oudere element. */
-        }
-
-        header nav a:hover {
-            color: #2f80ed; /* Verandert de tekstkleur naar een specifieke blauwtint wanneer erover gehoverd wordt. */
-            text-decoration: underline; /* Voegt een onderstreping toe wanneer erover gehoverd wordt. */
-        }
-
-        header h1 {
-            color: #000; /* Zwarte tekstkleur. */
-            margin-top: 10px; /* Voegt 10 pixels bovenmarge toe. */
-        }
-
-        main {
-            flex: 1; /* Dit is een flex shorthand eigenschap. Het zorgt ervoor dat het 'main'-element de beschikbare verticale ruimte inneemt tussen de header en de footer. Als er extra ruimte is, zal dit element 'groeien'. */
-            display: flex; /* Maakt de 'main' een flex-container. */
-            justify-content: center; /* Centreert de inhoud (de '.container') horizontaal. */
-            padding: 40px 20px; /* 40 pixels opvulling boven en onder, 20 pixels links en rechts. */
-        }
-
-        .container {
-            max-width: 1200px; /* Maximale breedte van 1200 pixels. */
-            background-color: rgba(0, 0, 0, 0.6); /* Semi-transparante zwarte achtergrondkleur (0.6 is de alpha-waarde, oftewel 60% dekking). */
-            padding: 40px; /* 40 pixels opvulling aan alle zijden. */
-            border-radius: 15px; /* Rondt de hoeken van de container af met een radius van 15 pixels. */
-        }
-
-        .project-grid {
-            display: grid; /* Maakt de container een grid-container. */
-            grid-template-columns: repeat(3, 1fr); /* Creëert 3 kolommen van gelijke breedte ('1fr' betekent 1 fractie van de beschikbare ruimte). */
-            gap: 30px; /* Voegt een ruimte van 30 pixels toe tussen de grid-items (projectkaarten). */
-        }
-
-        .project-card {
-            background-color: #f9f9f9; /* Lichte grijze achtergrondkleur. */
-            border-radius: 10px; /* Afgeronde hoeken. */
-            padding: 15px; /* 15 pixels opvulling aan alle zijden. */
-            text-align: center; /* Centreert de tekst binnen de kaart. */
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Voegt een schaduw toe. */
-            cursor: pointer; /* Verandert de muisaanwijzer in een handje wanneer deze over de kaart beweegt, wat aangeeft dat het klikbaar is. */
-            transition: transform 0.3s ease; /* Zorgt voor een vloeiende animatie (over een duur van 0.3 seconden) wanneer de 'transform' eigenschap verandert (bijv. bij hover). */
-            color: black; /* Zwarte tekstkleur voor de inhoud van de kaart. */
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px); /* Verplaatst de kaart 5 pixels omhoog, waardoor een zweefeffect ontstaat wanneer erover gehoverd wordt. */
-        }
-
-        .project-card img {
-            width: 100%; /* De afbeelding neemt de volledige breedte van de projectkaart in beslag. */
-            border-radius: 8px; /* Afgeronde hoeken voor de afbeelding. */
-            max-height: 200px; /* Maximale hoogte van 200 pixels. */
-            object-fit: cover; /* Zorgt ervoor dat de afbeelding de container vult, en bijsnijdt indien nodig, om de beeldverhouding te behouden. */
-        }
-
-        .project-card h3 {
-            margin-top: 10px; /* 10 pixels bovenmarge. */
-            font-size: 1.1em; /* Lettergrootte van 1.1 keer de standaard. */
-        }
-
-        .popup-overlay {
-            position: fixed; /* Positioneert het element ten opzichte van de viewport, zodat het altijd zichtbaar blijft, zelfs bij scrollen. */
-            top: 0; /* Plaats het overlay bovenaan. */
-            left: 0; /* Plaats het overlay links. */
-            width: 100%; /* Bedekt de gehele breedte van de viewport. */
-            height: 100%; /* Bedekt de gehele hoogte van de viewport. */
-            background: rgba(0,0,0,0.6); /* Semi-transparante zwarte achtergrond. */
-            display: none; /* De pop-up is standaard verborgen. Deze wordt zichtbaar gemaakt met JavaScript. */
-            justify-content: center; /* Centreert de pop-up inhoud horizontaal. */
-            align-items: center; /* Centreert de pop-up inhoud verticaal. */
-            z-index: 1000; /* Zorgt ervoor dat de pop-up bovenop alle andere inhoud wordt weergegeven. */
-            padding: 20px; /* Opvulling. */
-        }
-
-        .popup-content {
-            background: white; /* Witte achtergrond. */
-            padding: 20px; /* Opvulling. */
-            border-radius: 8px; /* Afgeronde hoeken. */
-            max-width: 900px; /* Maximale breedte. */
-            width: 100%; /* Neemt de volledige breedte in beslag binnen zijn container (met inachtneming van 'max-width'). */
-            max-height: 90%; /* Maximale hoogte van 90% van de viewport hoogte. */
-            overflow: auto; /* Voegt scrollbalken toe als de inhoud te groot is voor de pop-up. */
-            position: relative; /* Noodzakelijk voor de absolute positionering van de sluitknop. */
-            display: flex; /* Maakt de pop-up inhoud een flex-container. */
-            gap: 20px; /* Ruimte tussen de afbeelding en tekstblok. */
-            align-items: flex-start; /* Lijn flex-items uit aan het begin van de cross-axis. */
-            flex-wrap: wrap; /* Zorgt ervoor dat flex-items naar de volgende regel gaan als er te weinig ruimte is (belangrijk voor responsiviteit). */
-        }
-
-        .popup-content img {
-            max-width: 100%; /* Maximale breedte van 100%. */
-            max-height: 70vh; /* Maximale hoogte van 70% van de viewport hoogte. */
-            height: auto; /* Behoudt de aspect ratio. */
-            border-radius: 8px; /* Afgeronde hoeken. */
-            object-fit: contain; /* Zorgt ervoor dat de hele afbeelding zichtbaar blijft binnen de container, wat lege ruimte kan creëren. */
-            flex: 1 1 300px; /* Flex shorthand voor de afbeelding. Het mag groeien ('flex-grow: 1'), krimpen ('flex-shrink: 1') en heeft een basisbreedte van 300 pixels. */
-        }
-
-        .popup-text-block {
-            flex: 1 1 300px; /* Flex shorthand, vergelijkbaar met de afbeelding, waardoor het tekstblok ook flexibel kan zijn. */
-            text-align: left; /* Tekst links uitlijnen. */
-            color: #333; /* Donkergrijze tekstkleur. */
-            font-size: 1em; /* Standaard lettergrootte. */
-        }
-
-        .popup-text-block h2 {
-            margin-top: 0; /* Verwijdert de standaard bovenmarge van de '<h2>' in het pop-up tekstblok. */
-        }
-
-        .popup-text-block p {
-            margin-top: 10px; /* 10 pixels bovenmarge. */
-            line-height: 1.6; /* Stelt de regelhoogte in op 1.6 keer de lettergrootte, wat de leesbaarheid verbetert. */
-        }
-
-        .close-btn {
-            position: absolute; /* Positioneert de knop absoluut ten opzichte van zijn dichtstbijzijnde gepositioneerde ouder (wat de '.popup-content' is, omdat die 'position: relative' heeft). */
-            top: 10px; /* Plaats de knop 10 pixels van de bovenkant. */
-            right: 15px; /* Plaats de knop 15 pixels van de rechterkant van de pop-up inhoud. */
-            font-size: 24px; /* Grotere lettergrootte voor het 'X' teken. */
-            cursor: pointer; /* Verandert de muisaanwijzer in een handje. */
-        }
-        footer {
-            background: rgba(0, 0, 0, 0.8); /* Semi-transparante zwarte achtergrond. */
-            color: #ccc; /* Lichtgrijze tekstkleur. */
-            text-align: center; /* Centreert de tekst. */
-            padding: 20px; /* Opvulling. */
-            font-size: 0.9em; /* Iets kleinere lettergrootte. */
-            margin-top: auto; /* Dit is cruciaal voor de sticky footer. Omdat de 'body' een flex-container is met 'flex-direction: column', duwt 'margin-top: auto' de footer naar de onderkant van de pagina, ongeacht de inhoud van de 'main'. */
-        }
-
-        footer a {
-            color: #ccc; /* Lichtgrijze tekstkleur. */
-            margin: 0 10px; /* 10 pixels marge links en rechts. */
-            text-decoration: none; /* Verwijdert de onderstreping. */
-        }
-
-        footer a:hover {
-            text-decoration: underline; /* Voegt een onderstreping toe wanneer de muisaanwijzer over een footerlink beweegt. */
-        }
-
-        @media (max-width: 900px) { /* Dit is een media query. Het betekent dat de CSS-regels binnen dit blok alleen worden toegepast wanneer de breedte van de viewport maximaal 900 pixels is. */
-            .project-grid {
-                grid-template-columns: repeat(2, 1fr); /* Verandert het projectrooster naar 2 kolommen op schermen kleiner dan of gelijk aan 900px. */
-            }
-        }
-
-        @media (max-width: 600px) { /* Nog een media query, voor schermen maximaal 600 pixels breed. */
-            .project-grid {
-                grid-template-columns: 1fr; /* Verandert het projectrooster naar 1 kolom op kleinere schermen. */
-            }
-            .popup-content {
-                flex-direction: column; /* Voor de pop-up inhoud: de items (afbeelding en tekst) worden verticaal gestapeld. */
-                text-align: center; /* Centreert de tekst. */
-            }
-            .popup-text-block {
-                text-align: center; /* Centreert de tekst in het pop-up tekstblok. */
-            }
-        }
-    </style>
 </head>
 <body>
     <header>
@@ -240,13 +65,13 @@
 
     <div id="popup" class="popup-overlay">
         <div class="popup-content">
-            <span class="close-btn">&times;</span> <img id="popup-img" src="" alt="Popup afbeelding"> <div class="popup-text-block">
+            <span class="close-btn">&times;</span> <img id="popup-img" src="#" alt="Popup afbeelding"> <div class="popup-text-block">
                 <h2 id="popup-title"></h2> <p id="popup-text"></p> </div>
         </div>
     </div>
 
     <script>
-        /* Dit tag opent een JavaScript-blok. Alle code hierin wordt uitgevoerd door de browser. */
+        
 
         // Deze regels selecteren HTML-elementen en slaan ze op in 'const' (constante) variabelen. Dit maakt het gemakkelijker om ze later in de code te gebruiken.
         const popup = document.getElementById('popup'); // Selecteert het pop-up overlay element op basis van zijn ID.
