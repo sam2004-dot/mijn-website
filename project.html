@@ -25,7 +25,7 @@
 <body>
     <header>
         <nav>
-            <a href="index.html">Home</a> <a href="over.html">Over</a> <a href="contact.html">Contact</a> </nav>
+            <a href="index.html">Home</a> <a href="project.html">projecten</a> <a href="over.html">Over</a> <a href="contact.html">Contact</a>  </nav>
         <h1>Mijn Projecten</h1> </header>
 
     <main>
@@ -74,11 +74,11 @@
         
 
         // Deze regels selecteren HTML-elementen en slaan ze op in 'const' (constante) variabelen. Dit maakt het gemakkelijker om ze later in de code te gebruiken.
-        const popup = document.getElementById('popup'); // Selecteert het pop-up overlay element op basis van zijn ID.
-        const popupImg = document.getElementById('popup-img'); // Selecteert de afbeelding in de pop-up.
+        const popup = document.getElementById('popup'); 
+        const popupImg = document.getElementById('popup-img'); 
         const popupText = document.getElementById('popup-text'); // Selecteert de paragraaf voor de tekst in de pop-up.
         const popupTitle = document.getElementById('popup-title'); // Selecteert de titel in de pop-up.
-        const closeBtn = document.querySelector('.close-btn'); // Selecteert de sluitknop.
+        const closeBtn = document.querySelector('.close-btn'); 
         const cards = document.querySelectorAll('.project-card'); // Selecteert alle elementen met de klasse 'project-card'.
 
         // Dit is een loop die over elke 'project-card' heen gaat. Voor elke kaart:
@@ -91,10 +91,10 @@
                 const imgSrc = card.dataset.img;
 
                 // Vult de pop-up elementen met de opgehaalde gegevens.
-                popupImg.src = imgSrc; // Stelt de 'src' van de pop-up afbeelding in op het opgehaalde afbeeldingspad.
+                popupImg.src = imgSrc; 
                 popupImg.alt = title; // Stelt de 'alt' tekst van de pop-up afbeelding in op de titel.
-                popupTitle.textContent = title; // Stelt de tekstinhoud van de pop-up titel ('<h2>') in op de opgehaalde titel.
-                popupText.textContent = description; // Stelt de tekstinhoud van de pop-up paragraaf ('<p>') in op de opgehaalde beschrijving.
+                popupTitle.textContent = title; 
+                popupText.textContent = description; 
                 popup.style.display = 'flex'; // Verandert de CSS 'display' eigenschap van de 'popup-overlay' van 'none' naar 'flex', waardoor de pop-up zichtbaar wordt.
             });
         });
